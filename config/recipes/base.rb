@@ -24,5 +24,5 @@ def repository_url
   _user_name = STDIN.gets.strip
   STDOUT.print "\nGitlab's Git Password: "
   _password = STDIN.noecho(&:gets).strip
-  "https://#{_user_name}:#{_password}@gitlab.com/headerlabs/parsnip-web.git"
+  "https://#{_user_name}:#{_password}@gitlab.com/headerlabs/entawak-web.git"
 end
