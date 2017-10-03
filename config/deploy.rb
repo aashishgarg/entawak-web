@@ -108,7 +108,7 @@ end
 
 
 task :set_sudo_password => :environment do
-  command "echo '#{erb(File.join(__dir__, 'deploy', "#{fetch(:rails_env)}_configurations_files", 'sudo_password.erb'))}' > /home/#{fetch(:user)}/SudoPass.sh"
+  command "echo '#{erb(File.join(__dir__, 'deploy', "#{fetch(:rails_env)}_configurations_files", 'sudo_password.erb'))} > /home/#{fetch(:user)}/SudoPass.sh"
   command "chmod +x /home/#{fetch(:user)}/SudoPass.sh"
   command "export SUDO_ASKPASS=/home/#{fetch(:user)}/SudoPass.sh"
 end
