@@ -1,4 +1,4 @@
-class CreateQuestionaires < ActiveRecord::Migration[5.0]
+class CreateQuestionaires < ActiveRecord::Migration[5.1]
   def change
     create_table :questionaires do |t|
       t.references :team

@@ -8,7 +8,7 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 RUN dpkg-reconfigure locales
 # Set the Ruby version of your preference
-ENV RUBY_VERSION 2.4.1
+ENV RUBY_VERSION 2.4.2
 # Install build dependencies
 RUN apt-get update -qq && \
     apt-get install -y -qq \
