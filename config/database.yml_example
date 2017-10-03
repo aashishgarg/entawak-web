@@ -17,10 +17,10 @@ production:
   <<: *default
   database: entawak_production
   username: root
-  password: 'ent@w@k'
+  password: ent@w@k
 
 staging:
   <<: *default
   database: entawak_staging
   username: root
-  password: 'ent@w@k'
+  password: ent@w@k
