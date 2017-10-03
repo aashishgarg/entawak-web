@@ -1,0 +1,26 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  pool: 15
+  reaping_frequency: 25
+  pool: 5
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: entawak_development
+  password: headerlabs
+
+production:
+  <<: *default
+  database: entawak_production
+  username: root
+  password: 'ent@w@k'
+
+staging:
+  <<: *default
+  database: entawak_staging
+  username: root
+  password: 'ent@w@k'
