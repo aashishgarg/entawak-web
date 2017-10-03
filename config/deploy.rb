@@ -9,7 +9,7 @@ require 'io/console'
   require "#{File.join(__dir__, 'recipes', "#{pkg}")}"
 end
 
-set :application, 'mustard-web'
+set :application, 'entawak-web'
 set :user, 'deploy'
 set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
 set :repository, repository_url
@@ -17,9 +17,10 @@ set :branch, set_branch
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
 
 set :sheet_name, 'Product deployment status'
-set :work_sheet_name, 'RecallIt'
+set :work_sheet_name, 'entawak-web'
 
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/cable.yml')
+set :shared_dirs, fetch(:shared_dirs, []).push('public/system')
 
 set :ruby_version, "#{File.readlines(File.join(__dir__, '..', '.ruby-version')).first.strip}"
 set :gemset, "#{File.readlines(File.join(__dir__, '..', '.ruby-gemset')).first.strip}"
@@ -34,14 +35,14 @@ task :setup => :environment do
   command %[mkdir -p "#{fetch(:shared_dir)}/log"]
   command %[chmod g+rx,u+rwx "#{fetch(:shared_dir)}/log"]
 
-  command %[mkdir -p "#{fetch(:shared_dir)}/photofy"]
-  command %[chmod g+rx,u+rwx "#{fetch(:shared_dir)}/photofy"]
-
   command %[mkdir -p "#{fetch(:shared_dir)}/config"]
   command %[chmod g+rx,u+rwx "#{fetch(:shared_dir)}/config"]
 
   command %[mkdir -p "#{fetch(:shared_dir)}/tmp/pids"]
   command %[chmod g+rx,u+rwx "#{fetch(:shared_dir)}/tmp/pids"]
+
+  command %[mkdir -p "#{fetch(:shared_dirs)}/public/system"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_dirs)}/public/system"]
 
   command %[touch "#{fetch(:shared_dir)}/config/database.yml"]
   invoke :setup_prerequesties
