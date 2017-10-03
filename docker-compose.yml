@@ -1,0 +1,93 @@
+version: '2'
+services:
+  db:
+    restart: always
+    image: 'mysql:5.7'
+    environment:
+      MYSQL_ROOT_PASSWORD: Welcome@123
+    ports:
+      - "3306:3306"
+    volumes:
+      - "../shared/.mysql-data:/var/lib/mysql"
+
+  memcached:
+    restart: always
+    image: memcached
+    ports:
+      - "11211:11211"
+
+#  redis:
+#    restart: always
+#    image: 'redis'
+#    ports:
+#      - "6379:6379"
+#    volumes:
+#        - '../shared/.redis-data:/var/lib/redis/data'
+
+  web:
+    depends_on:
+      - 'db'
+      - 'memcached'
+    build: .
+    user: sonu
+    stdin_open: true
+    tty: true
+    environment:
+      RAILS_ENV: development
+      MEMCACHED_HOST: memcached
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/entawak_web
+    ports:
+      - "3000:3000"
+
+#  sidekiq:
+#    depends_on:
+#      - 'db'
+#      - 'redis'
+#      - 'memcached'
+#    build: .
+#    environment:
+#      REDIS_URL: 'redis://redis:6379/1'
+#      RAILS_ENV: development
+#    command: bundle exec sidekiq -C config/sidekiq.yml
+#    volumes:
+#      - .:/figs_web
+
+#  faye:
+#    depends_on:
+#      - 'redis'
+#      - 'memcached'
+#    build: .
+#    environment:
+#      REDIS_URL: 'redis://redis:6379/1'
+#      RAILS_ENV: development
+#    ports:
+#      - '9292:9292'
+#    command: rackup faye.ru -s thin -p 3001 -o 0.0.0.0 -P tmp/pids/faye.pid
+#    volumes:
+#      - .:/figs_web
+
+#  workers:
+#    build:
+#      context: ./../papayaheaderlabs.figs_worker/.
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - 'db'
+#      - 'web'
+#    command: ruby ./run_all_workers.rb
+#    volumes:
+#      - .:/figs_worker
+
+#  cable:
+#    depends_on:
+#      - 'redis'
+#    build: .
+#    command: ./bin/cable
+#    environment:
+#      REDIS_URL: 'redis://redis:6379/1'
+#    ports:
+#      - '28080:28080'
+#    volumes:
+#      - .:/figs_web
+
