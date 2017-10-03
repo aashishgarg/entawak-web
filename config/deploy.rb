@@ -24,12 +24,12 @@ set :gemset, "#{File.readlines(File.join(__dir__, '..', '.ruby-gemset')).first.s
 set :sheet_name, 'Product deployment status'
 set :work_sheet_name, 'EntawakWeb'
 
-task :environment do
+task :remote_environment do
   set :rails_env, ENV['on'].to_sym unless ENV['on'].nil?
   require "#{File.join(__dir__, 'deploy', "#{fetch(:rails_env)}_configurations_files", "#{fetch(:rails_env)}.rb")}"
   invoke :'rvm:use', "ruby-#{fetch(:ruby_version)}@#{fetch(:gemset)}"
 end
-task :setup => :environment do
+task :setup => :remote_environment do
   invoke :set_sudo_password
   command %[mkdir -p "#{fetch(:shared_dir)}/log"]
   command %[chmod g+rx,u+rwx "#{fetch(:shared_dir)}/log"]
@@ -47,11 +47,11 @@ task :setup => :environment do
   # comment %["-----> Be sure to edit 'shared/config/*.yml files'."]
 end
 
-task :photofy_setup => :environment do
+task :photofy_setup => :remote_environment do
   command %[mkdir -p #{fetch(:deploy_to)}/#{fetch(:shared_path)}/photofy ]
 end
 
-task :setup_prerequesties => :environment do
+task :setup_prerequesties => :remote_environment do
   # comment "-----> Installing development dependencies"
   [
       'python-software-properties', 'libmysqlclient-dev', 'imagemagick', 'libmagickwand-dev', 'nodejs',
@@ -81,7 +81,7 @@ task :setup_prerequesties => :environment do
 
 end
 
-task :setup_yml => :environment do
+task :setup_yml => :remote_environment do
   # invoke :set_sudo_password
   Dir[File.join(__dir__, '*.yml_example')].each do |_path|
     command %[echo "#{erb _path}" > "#{File.join(fetch(:deploy_to), 'shared/config', File.basename(_path, '.yml_example') +'.yml')}"]
@@ -89,7 +89,7 @@ task :setup_yml => :environment do
 end
 
 desc "Deploys the current version to the server."
-task :deploy => :environment do
+task :deploy => :remote_environment do
 
 
   deploy do
@@ -107,14 +107,14 @@ task :deploy => :environment do
 end
 
 
-task :set_sudo_password => :environment do
+task :set_sudo_password => :remote_environment do
   command "echo '#{erb(File.join(__dir__, 'deploy', "#{fetch(:rails_env)}_configurations_files", 'sudo_password.erb'))}' > /home/#{fetch(:user)}/SudoPass.sh"
   command "chmod +x /home/#{fetch(:user)}/SudoPass.sh"
   command "export SUDO_ASKPASS=/home/#{fetch(:user)}/SudoPass.sh"
 end
 
 desc 'Restart passenger server'
-task :restart => :environment do
+task :restart => :remote_environment do
   invoke :set_sudo_password
   command %[sudo -A service nginx restart]
   comment "----------------------------- Start Passenger"

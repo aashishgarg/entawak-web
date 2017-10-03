@@ -1,5 +1,5 @@
 #========== Instance Details===============#
-set :host_ip, ''
+set :host_ip, '52.40.153.144'
 set :domain, fetch(:host_ip)
 #==========================================#
 
