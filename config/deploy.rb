@@ -43,12 +43,7 @@ task :setup => :environment do
   command %[touch "#{fetch(:shared_dir)}/config/database.yml"]
   invoke :setup_prerequesties
   invoke :setup_yml
-  invoke :photofy_setup
   # comment %["-----> Be sure to edit 'shared/config/*.yml files'."]
-end
-
-task :photofy_setup => :environment do
-  command %[mkdir -p #{fetch(:deploy_to)}/#{fetch(:shared_path)}/photofy ]
 end
 
 task :setup_prerequesties => :environment do
