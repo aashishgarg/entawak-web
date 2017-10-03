@@ -27,7 +27,7 @@ set :work_sheet_name, 'EntawakWeb'
 task :environment do
   set :rails_env, ENV['on'].to_sym unless ENV['on'].nil?
   require "#{File.join(__dir__, 'deploy', "#{fetch(:rails_env)}_configurations_files", "#{fetch(:rails_env)}.rb")}"
-  invoke :'rvm:use', "ruby-#{fetch(:ruby_version)}@#{fetch(:gemset)}"
+  invoke :'rvm:use', "#{fetch(:ruby_version)}@#{fetch(:gemset)}"
 end
 task :setup => :environment do
   invoke :set_sudo_password
