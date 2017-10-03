@@ -18,6 +18,7 @@
 !/tmp/.keep
 test/
 /.idea
+*.yml
 
 # Ignore Byebug command history file.
 .byebug_history
