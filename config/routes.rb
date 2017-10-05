@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+
+  get 'games/introduction'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_scope :teacher do
+    root to: "teachers/sessions#new"
+  end
+
   devise_for :teachers, controllers: {
       registrations: 'teachers/registrations',
-      sessions: 'teachers/sessions'
+      sessions: 'teachers/sessions',
+      password: 'teachers/password'
   }
 end
