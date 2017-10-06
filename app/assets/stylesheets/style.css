@@ -3,17 +3,17 @@ body {
     font-family: gotham-regular !important;
 }
 
-@font-face {
-    font-family: gotham-regular;
-    src: url('gotham-regular.ttf') format('truetype');
-    /*src: url(../fonts/gotham-regular.ttf);*/
-}
+/*@font-face {*/
+    /*font-family: gotham-regular;*/
+    /*src: url('gotham-regular.ttf') format('truetype');*/
+    /*!*src: url(../fonts/gotham-regular.ttf);*!*/
+/*}*/
 
-@font-face {
-    font-family: gotham-bold;
-    src: url('gotham-bold.ttf') format('truetype');
-    /*src: url(../fonts/gotham-bold.ttf);*/
-}
+/*@font-face {*/
+    /*font-family: gotham-bold;*/
+    /*src: url('gotham-bold.ttf') format('truetype');*/
+    /*!*src: url(../fonts/gotham-bold.ttf);*!*/
+/*}*/
 
 html {
     position: relative;
