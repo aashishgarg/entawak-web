@@ -1,21 +1,24 @@
 
 body {
-    font-family: gotham-regular;
+    font-family: gotham-regular !important;
 }
 
 @font-face {
     font-family: gotham-regular;
-    src: url(.//fonts/gotham-regular.ttf);
+    src: url('gotham-regular.ttf');
+    /*src: url(../fonts/gotham-regular.ttf);*/
 }
 
 @font-face {
     font-family: gotham-bold;
-    src: url(.//fonts/gotham-bold.ttf);
+    src: url('gotham-bold.ttf');
+    /*src: url(../fonts/gotham-bold.ttf);*/
 }
 
 html {
     position: relative;
     min-height: 100%;
+    font-family: gotham-regular;
 }
 
 body {
@@ -62,6 +65,11 @@ img {
     padding-right: 20px !important;
 }
 
+.header_logout_dropdown {
+    left: auto;
+    right: 0;
+}
+
 .logo {
     max-width: 90px;
 }
@@ -75,7 +83,7 @@ img {
 }
 
 .banner {
-    background: url(../images/banner_bg.png) #000;
+    background: image_url('banner_bg.png') #000;
     text-align: center;
     padding: 80px 0 120px 0;
     /* background-size:  */
@@ -247,7 +255,7 @@ img {
     bottom: 0;
     left: 0;
     width: 40%;
-    background: url(../images/login_bg_left.png) bottom left no-repeat / contain;
+    background: image_url('login_bg_left.png') bottom left no-repeat / contain;
     height: 140px;
 }
 
@@ -256,7 +264,7 @@ img {
     bottom: 0;
     right: 0;
     width: 60%;
-    background: url(../images/login_bg_right.png) bottom right no-repeat / contain;
+    background: image_url('login_bg_right.png') bottom right no-repeat / contain;
     height: 220px;
 }
 
@@ -298,7 +306,7 @@ img {
     margin-top: 20px;
 }
 
-.login_form form button {
+.login_form form [type=submit] {
     color: #fff;
     text-transform: uppercase;
     padding-top: 12px;
@@ -757,9 +765,4 @@ h4.inner_heading strong {
     border-color: #fff;
     padding-top: 10px;
 
-}
-
-.logo_img {
-    width: 189px;
-    height: 106px;
 }

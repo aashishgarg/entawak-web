@@ -44,6 +44,7 @@ end
 # For active admin
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
+gem "font-awesome-rails"
 
 gem "paperclip", '~> 5.0.0'
 

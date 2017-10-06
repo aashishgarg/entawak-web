@@ -15,7 +15,7 @@
     <h2>Teacher Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%#= devise_error_messages! %>
+        <%= devise_error_messages! %>
         <div class="form-group">
           <%= f.text_field :name, autofocus: true, placeholder: 'Name', class: "form-control" %>
         </div>
@@ -34,7 +34,7 @@
 
 
     <div class="text-center forgot_pass">
-      <p>Do you have already an account? <%= link_to 'Sign in', new_teacher_session_path, class: 'primery-color' %></p>
+      <p>Already have an account? <%= link_to 'Sign in', new_teacher_session_path, class: 'primery-color' %></p>
     </div>
 
 
