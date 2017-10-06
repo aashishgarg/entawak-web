@@ -5,14 +5,14 @@ body {
 
 @font-face {
     font-family: gotham-regular;
-    src: url('gotham-regular.ttf');
-    /*src: url(../fonts/gotham-regular.ttf);*/
+    /*src: url('gotham-regular.ttf');*/
+    src: url(../fonts/gotham-regular.ttf);
 }
 
 @font-face {
     font-family: gotham-bold;
-    src: url('gotham-bold.ttf');
-    /*src: url(../fonts/gotham-bold.ttf);*/
+    /*src: url('gotham-bold.ttf');*/
+    src: url(../fonts/gotham-bold.ttf);
 }
 
 html {

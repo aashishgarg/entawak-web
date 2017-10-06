@@ -13,5 +13,6 @@
  *= require bootstrap.min
  *= require responsive
  *= require font-awesome
+ *= require style
  *= require_self
  */
