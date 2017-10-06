@@ -250,23 +250,23 @@ img {
     background: linear-gradient(to left, #AB41D1, #6B2BDC);
 }
 
-/*.login_bg_l {*/
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*width: 40%;*/
-    /*background: image_url('login_bg_left.png') bottom left no-repeat / contain;*/
-    /*height: 140px;*/
-/*}*/
+.login_bg_l {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    background: image_url('login_bg_left.png') bottom left no-repeat / contain;
+    height: 140px;
+}
 
-/*.login_bg_r {*/
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    /*right: 0;*/
-    /*width: 60%;*/
-    /*background: image_url('login_bg_right.png') bottom right no-repeat / contain;*/
-    /*height: 220px;*/
-/*}*/
+.login_bg_r {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    background: image_url('login_bg_right.png') bottom right no-repeat / contain;
+    height: 220px;
+}
 
 .login_box {
     position: absolute;
