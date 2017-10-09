@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       sessions: 'teachers/sessions',
       password: 'teachers/password'
   }
+
+  resources :games
 end

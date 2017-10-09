@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_teacher!
 
   def after_sign_in_path_for(resource)
-    games_introduction_path
+    new_game_path
   end
 
 end

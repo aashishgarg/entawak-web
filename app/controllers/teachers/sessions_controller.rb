@@ -1,6 +1,6 @@
 class Teachers::SessionsController < Devise::SessionsController
 
-  layout 'login', :only => [:new]
+  layout 'login_layout', :only => [:new]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
