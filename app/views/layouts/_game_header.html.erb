@@ -1,21 +1,42 @@
 <nav class="navbar navbar-light navbar-expand-md justify-content-between">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span></button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
   <div class="collapse navbar-collapse justify-content-between dual-nav" id="navbarSupportedContent">
     <ul class="navbar-nav mr-0">
       <li class="nav-item active">
         <%= link_to 'javascript:void(0);', class: 'nav-link home' do %>
-            <i class="fa fa-home" aria-hidden="true"></i>
+            <%= image_tag 'escape_monster.png', class: 'logo' %>
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to 'Help', new_teacher_session_path, class: 'nav-link' %>
+      <li class="nav-item mt-2">
+        <%= link_to 'Help', games_introduction_path, class: 'nav-link' %>
       </li>
     </ul>
   </div>
-  <%= link_to 'javascript:void(0);', class: 'navbar-brand mr-0' do %>
-      <%= image_tag 'escape_monster.png' %>
-  <% end %>
+
+  <div class="secret_knock">
+    <h2>Secret Knock</h2>
+
+    <div class="knock_table_div">
+      <table class="table rounded">
+        <tbody>
+        <tr>
+          <% @secret_knock.digits.insert(3, '-').each do |digit| %>
+              <td><%= digit %></td>
+          <% end %>
+        </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+  <!--/secret_knock-->
+
+
   <div class="navbar-collapse collapse dual-nav">
     <ul class="nav navbar-nav ml-auto">
       <% if teacher_signed_in? %>
@@ -41,3 +62,7 @@
     </ul>
   </div>
 </nav>
+
+
+</div>
+<!--container-fluid-->
