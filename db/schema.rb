@@ -58,7 +58,9 @@ ActiveRecord::Schema.define(version: 20171009092202) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "secret_knock"
+    t.bigint "secret_knock"
+    t.integer "duration"
+    t.integer "missing_devices"
     t.index ["teacher_id"], name: "index_games_on_teacher_id"
   end
 

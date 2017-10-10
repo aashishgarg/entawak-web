@@ -16,4 +16,10 @@ Rails.application.routes.draw do
   }
 
   resources :games
+
+  resources :students do
+    collection do
+      match :welcome, via: [:get, :post]
+    end
+  end
 end

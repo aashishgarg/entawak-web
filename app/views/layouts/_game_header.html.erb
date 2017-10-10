@@ -23,7 +23,7 @@
       <table class="table rounded">
         <tbody>
         <tr>
-          <% @secret_knock.digits.insert(3, '-').each do |digit| %>
+          <% @game.secret_knock.digits.insert(3, '-').each do |digit| %>
               <td><%= digit %></td>
           <% end %>
         </tr>

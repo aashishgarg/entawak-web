@@ -13,6 +13,7 @@
  *= require bootstrap.min
  *= require responsive
  *= require font-awesome
+ *= require students
  *= require style
  *= require_self
  */
