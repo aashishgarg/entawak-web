@@ -41,6 +41,11 @@ RUN echo 'gem: --no-document --no-ri' >> /usr/local/etc/gemrc &&\
     mkdir /src && cd /src && git clone https://github.com/sstephenson/ruby-build.git &&\
     cd /src/ruby-build && ./install.sh &&\
     cd / && rm -rf /src/ruby-build && ruby-build $RUBY_VERSION /usr/local
+# Install redis
+RUN apt-get install -y -qq build-essential tcl
+RUN cd /tmp && curl -O http://download.redis.io/redis-stable.tar.gz && tar xzvf redis-stable.tar.gz &&\
+    cd redis-stable && make && make test && make install
+
 # Install bundler currently  we're using this but we should not.
 RUN gem install bundler
 ENV APPLICATION_NAME=entawak_web

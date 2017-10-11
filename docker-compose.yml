@@ -16,18 +16,19 @@ services:
     ports:
       - "11211:11211"
 
-#  redis:
-#    restart: always
-#    image: 'redis'
-#    ports:
-#      - "6379:6379"
-#    volumes:
-#        - '../shared/.redis-data:/var/lib/redis/data'
+  redis:
+    restart: always
+    image: 'redis'
+    ports:
+      - "6379:6379"
+    volumes:
+        - '../shared/.redis-data:/var/lib/redis/data'
 
   web:
     depends_on:
       - 'db'
       - 'memcached'
+      - 'redis'
     build: .
     user: sonu
     stdin_open: true
@@ -89,5 +90,5 @@ services:
 #    ports:
 #      - '28080:28080'
 #    volumes:
-#      - .:/figs_web
+#      - .:/entawak_web
 
