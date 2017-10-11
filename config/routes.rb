@@ -15,7 +15,11 @@ Rails.application.routes.draw do
       password: 'teachers/password'
   }
 
-  resources :games
+  resources :games do
+    member do
+      get :active_students
+    end
+  end
 
   resources :students do
     collection do

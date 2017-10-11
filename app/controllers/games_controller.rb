@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 
   layout 'game_layout', except: [:introduction]
 
-  before_action :fetch_game, only: [:update]
+  before_action :fetch_game, only: [:update, :active_students]
 
   def introduction
   end
@@ -17,10 +17,18 @@ class GamesController < ApplicationController
 
   def update
     if @game.update(missing_devices: params[:game][:missing_devices])
-      redirect_to games_introduction_path
+      redirect_to active_students_game_path(@game)
     else
       redirect_to :back
     end
+  end
+
+  def show
+
+  end
+
+  def active_students
+
   end
 
   private
