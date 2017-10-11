@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :students do
     collection do
-      match :welcome, via: [:get, :post]
+      get :welcome
     end
   end
 end

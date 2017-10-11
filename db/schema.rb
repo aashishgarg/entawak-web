@@ -94,10 +94,11 @@ ActiveRecord::Schema.define(version: 20171009092202) do
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "team_id"
+    t.bigint "game_id"
     t.string "name"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_students_on_game_id"
     t.index ["team_id"], name: "index_students_on_team_id"
   end
 

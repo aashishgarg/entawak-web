@@ -1,0 +1,14 @@
+<div class="main_container">
+
+  <div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
+
+  <div class="enter_name_code">
+    <%= form_with scope: :student, url: new_student_path, method: :get, local: true do |f| %>
+        <h2>Secret Knock</h2>
+        <%= f.text_field :secret_knock %>
+        <%= f.submit 'Join', class: 'btn primery-gradient-l-r student_button' %>
+    <% end %>
+  </div>
+
+
+</div>
