@@ -1,0 +1,45 @@
+<div class="container teams_container">
+
+  <div class="row mb-3">
+    <div class="col-md-8"><h3 class="inner_heading">FIND YOUR CLAN COLOR AND SIT TOGETHER!</h3></div>
+
+    <div class="col-md-4">
+      <div class="text-center game_time">
+
+        <a href="#"><%= image_tag 'plus.png' %></a>
+        30 minutes
+        <a href="#"><%= image_tag 'minus.png' %></a>
+      </div>
+    </div>
+  </div><!--/row-->
+
+  <div class="row calns_row">
+
+    <% @game.teams.each do |team| %>
+        <div class="col-sm-3">
+          <ul class="list-group clans <%= team.name %>">
+            <li class="list-group-item clan_heading"><%= team&.name&.capitalize %> Clan</li>
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+
+        </div>
+    <% end %>
+
+    <div class="col-sm-3">
+
+      <div class="text-right mt-4">
+        <span class="outer_btn text-center primery-gradient-l-r">
+          <%= link_to 'Intro', games_introduction_path %>
+        </span>
+      </div>
+
+    </div>
+
+  </div><!--/row-->
+
+  <h4 class="inner_heading text-center"><strong>Plus 5 Kidster</strong></h4>
+</div>

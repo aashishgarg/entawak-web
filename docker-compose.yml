@@ -17,10 +17,10 @@ services:
       - "11211:11211"
 
   redis:
-    restart: always
-    image: 'redis'
+    image: 'redis:3.2-alpine'
+    command: redis-server --requirepass yourpassword
     ports:
-      - "6379:6379"
+      - '6379:6379'
     volumes:
         - '../shared/.redis-data:/var/lib/redis/data'
 
@@ -80,15 +80,17 @@ services:
 #    volumes:
 #      - .:/figs_worker
 
-#  cable:
-#    depends_on:
-#      - 'redis'
-#    build: .
-#    command: ./bin/cable
-#    environment:
-#      REDIS_URL: 'redis://redis:6379/1'
-#    ports:
-#      - '28080:28080'
-#    volumes:
-#      - .:/entawak_web
+  cable:
+    depends_on:
+      - 'redis'
+    build: .
+    command: puma -p 28080 cable/config.ru
+    environment:
+      REDIS_URL: 'redis://redis:6379/1'
+    ports:
+      - '28080:28080'
+    volumes:
+      - .:/entawak_web
+    env_file:
+      - '.env'
 

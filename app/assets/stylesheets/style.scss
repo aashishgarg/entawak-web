@@ -422,6 +422,15 @@ img {
     color: #AB41D1;
     text-decoration: none;
 }
+.outer_btn input {
+  background: #fff;
+  line-height: 46px;
+  border-radius: 40px;
+  color: #AB41D1;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
 
 .em_play {
     color: #6A5BDF;
@@ -450,27 +459,25 @@ h4.inner_heading strong {
     overflow: hidden;
 }
 
-.student_with_device .middle_border {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-}
 
-.student_with_device .col-12 {
+.student_with_device .col-4 {
     padding: 10px 6px;
     border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
     position: relative;
     color: #606060;
 }
 
-.student_with_device .col-12:last-child {
-    border-bottom: none;
+.student_with_device .col-4:last-child {
+    //border: none;
 }
 
-.student_with_device .col-12 .fa {
+
+.student_with_device .col-4 .fa {
     display: none;
     position: absolute;
     right: 10px;
-    top: 12px;
+    top: 0px;
     cursor: pointer;
     color: #C1C1C1;
 }

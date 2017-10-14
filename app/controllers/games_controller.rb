@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 
   layout 'game_layout', except: [:introduction]
 
-  before_action :fetch_game, only: [:update, :active_students]
+  before_action :fetch_game, only: [:update, :active_students, :team_assigmnent]
 
   def introduction
   end
@@ -28,7 +28,11 @@ class GamesController < ApplicationController
   end
 
   def active_students
+    cookies.signed[:teacher_id] = current_teacher.id
+  end
 
+  def team_assigmnent
+    @game.assign_team_and_students
   end
 
   private

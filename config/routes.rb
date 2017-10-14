@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :games do
     member do
       get :active_students
+      get :team_assigmnent
     end
   end
 
