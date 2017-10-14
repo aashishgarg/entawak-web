@@ -15,8 +15,5 @@
 //= require rails-ujs
 //= require popper.min
 //= require bootstrap.min
-//= require pnotify
-//= require unobtrusive_flash
-//= require flashes
 //= require turbolinks
 //= require_tree .
