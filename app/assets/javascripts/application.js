@@ -11,12 +11,12 @@
 // about supported directives.
 //
 
+//= require rails-ujs
 //= require jquery.min
 //= require popper.min
 //= require bootstrap.min
 //= require pnotify
 //= require unobtrusive_flash
 //= require flashes
-//= require rails-ujs
 //= require turbolinks
 //= require_tree .
