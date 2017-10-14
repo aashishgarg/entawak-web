@@ -11,7 +11,8 @@
   </div>
 
   <div class="row mt-2">
-    <div class="col-sm-6"><h4 class="inner_heading"><strong>5</strong> kidsters without a device</h4></div>
+    <div class="col-sm-6">
+      <h4 class="inner_heading"><strong><%= @game.missing_devices %></strong> kidsters without a device</h4></div>
     <div class="col-sm-6 text-right">
   <span class="outer_btn primery-gradient-l-r">
   <%= link_to 'Assign to Clan', team_assigmnent_game_path(@game) %>
