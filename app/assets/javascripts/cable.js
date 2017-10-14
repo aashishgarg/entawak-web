@@ -8,6 +8,6 @@
 (function() {
   this.App || (this.App = {});
 
-  App.cable = ActionCable.createConsumer('wss://52.40.153.144/cable');
+  App.cable = ActionCable.createConsumer('/cable');
 
 }).call(this);
