@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount ActionCable.server => "/cable"
+
   get 'games/introduction'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
