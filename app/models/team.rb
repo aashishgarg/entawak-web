@@ -1,7 +1,7 @@
 class Team < ApplicationRecord
 
   #============== Constants ====================
-  CLAN_NAME = ['red', 'yellow', 'green', 'blue', 'purple', 'pink']
+  CLAN_NAMES = %w(red yellow green blue purple pink)
 
   #============== Associations =================
   has_many :students, inverse_of: :team
