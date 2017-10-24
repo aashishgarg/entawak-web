@@ -22,7 +22,7 @@ class Game < ApplicationRecord
   private
 
   def assign_secret_knock
-    self.secret_knock = (SecureRandom.random_number(9e5) + 1e5).to_i
+    self.secret_knock = 6.times.map { rand(1..9) }.join.to_i
   end
 end
 

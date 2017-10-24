@@ -30,7 +30,7 @@ class GamesController < ApplicationController
   end
 
   def active_students
-    cookies.signed[:teacher_id] = current_teacher.id
+    cookies.signed[:game_id] = @game.id
   end
 
   def team_assigmnent

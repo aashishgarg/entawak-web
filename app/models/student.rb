@@ -10,6 +10,6 @@ class Student < ApplicationRecord
   private
 
   def notify_teacher
-    ActionCable.server.broadcast "teacher_#{game.teacher_id}", name
+    ActionCable.server.broadcast "game_#{game.id}", name
   end
 end
