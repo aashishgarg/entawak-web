@@ -1,5 +1,5 @@
 function studentNotify(gameID) {
-    App.activeStudent = App.cable.subscriptions.create({
+    App.gameChannel = App.cable.subscriptions.create({
         channel: "GameChannel",
         room: gameID
     }, {
