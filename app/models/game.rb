@@ -9,6 +9,9 @@ class Game < ApplicationRecord
   #============== Callbacks =====================
   before_create :assign_secret_knock
 
+  #============== Validations ===================
+  validates :teacher, presence: true
+
   # Rule are:
   # 1. Only is available when students count > 3
   # TODO: Please put down the other rules here
