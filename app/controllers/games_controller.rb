@@ -1,7 +1,9 @@
 class GamesController < ApplicationController
 
+  ########## Layouts ########################
   layout 'game_layout', except: [:introduction]
 
+  ########## Filters ########################
   before_action :fetch_game, only: [:update, :active_students, :team_assigmnent]
 
   def introduction

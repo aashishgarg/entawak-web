@@ -1,6 +1,9 @@
 class StudentsController < ApplicationController
 
+  ########## Layouts ########################
   layout 'students', only: [:welcome, :new]
+
+  ########## Filters ########################
   skip_before_action :authenticate_teacher!
   before_action :set_game, only: [:new, :create]
 

@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
+
+  ######### Protect from forgery ###################
   protect_from_forgery with: :exception
+
+  ########## Filters ###############################
   before_action :authenticate_teacher!
   after_action :prepare_unobtrusive_flash
 

@@ -6,7 +6,7 @@ class Game < ApplicationRecord
   has_many :teams, inverse_of: :game, dependent: :destroy
   has_many :results, inverse_of: :game
 
-  #============== Callbacks =================
+  #============== Callbacks =====================
   before_create :assign_secret_knock
 
   def assign_team_and_students
