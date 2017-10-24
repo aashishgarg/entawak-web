@@ -12,4 +12,5 @@ class Student < ApplicationRecord
   def notify_teacher
     ActionCable.server.broadcast "teacher_#{game.teacher_id}", name
   end
+
 end

@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
 
-  #============== Associations =================
+  #============== Associations ==================
   belongs_to :teacher, inverse_of: :games
   has_many :students, inverse_of: :game, dependent: :destroy
   has_many :teams, inverse_of: :game, dependent: :destroy
@@ -9,13 +9,16 @@ class Game < ApplicationRecord
   #============== Callbacks =====================
   before_create :assign_secret_knock
 
+  # Rule are:
+  # 1. Only is available when students count > 3
+  # TODO: Please put down the other rules here
   def assign_team_and_students
-    if students.count >= 4
-      teams.destroy_all
-      Team::CLAN_NAME.take(students.count.div(4)).each {|clan| teams.create(name: clan)}
-      students.zip(teams.cycle) do |student, team|
-        student.update(team: team)
-      end
+    return if students.count < 4
+
+    teams.destroy_all
+    Team::CLAN_NAMES.take(students.count.div(4)).each {|clan_name| teams.create(name: clan_name)}
+    students.zip(teams.cycle) do |student, team|
+      student.update(team: team)
     end
   end
 
