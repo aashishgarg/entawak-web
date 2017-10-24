@@ -5,10 +5,9 @@
   <div class="enter_name_code">
     <%= form_with scope: :student, url: new_student_path, method: :get, local: true do |f| %>
         <h2>Secret Knock</h2>
-        <%= f.text_field :secret_knock %>
+        <%= f.text_field :secret_knock, maxlength:'6', pattern:'\d{6}', required: true %>
         <%= f.submit 'Join', class: 'btn primery-gradient-l-r student_button' %>
     <% end %>
   </div>
-
 
 </div>
