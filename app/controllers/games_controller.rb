@@ -1,8 +1,8 @@
 class GamesController < ApplicationController
 
-  layout 'game_layout', except: [:introduction]
-
-  before_action :fetch_game, only: [:update, :active_students, :team_assigmnent]
+  layout 'game_layout'
+  before_action :fetch_game, only: [:update, :active_students, :team_assigmnent, :start, :change_audio, :introduction]
+  before_action :pick_random_song, only: [:start, :change_audio]
 
   def introduction
   end
@@ -35,10 +35,22 @@ class GamesController < ApplicationController
     @game.assign_team_and_students
   end
 
+  def start
+
+  end
+
+  def change_audio
+    render 'start'
+  end
+
   private
 
   def fetch_game
     @game = current_teacher.games.find(params[:id])
+  end
+
+  def pick_random_song
+    @audio = Audio.all.sample(1).first
   end
 
 end

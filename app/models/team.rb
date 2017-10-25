@@ -6,6 +6,8 @@ class Team < ApplicationRecord
   #============== Associations =================
   has_many :students, inverse_of: :team
   has_one :questionaire, inverse_of: :team
+  has_many :questions, through: :questionaire
+
   belongs_to :game, inverse_of: :teams
   has_many :results, inverse_of: :team
 

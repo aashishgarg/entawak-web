@@ -3,7 +3,7 @@ ActiveAdmin.register Audio do
   permit_params :audio, :on, :audio
 
   form :html => { :multipart => true } do |f|
-    f.inputs "Upload" do
+    f.inputs 'Upload' do
       f.input :audio, :type => :file
     end
     f.actions
@@ -12,8 +12,6 @@ ActiveAdmin.register Audio do
   index do
     selectable_column
     id_column
-    column :audio_file
-     audio_tag(audio.url, autoplay: false, controls: true)
   end
 
 # See permitted parameters documentation:
