@@ -8,6 +8,7 @@ class Team < ApplicationRecord
   has_many :students, inverse_of: :team
   has_one :questionaire, inverse_of: :team
   has_many :results, inverse_of: :team
+  has_many :questions, through: :questionaire
 
   #============== Validations ==================
   validates :game, presence: true
