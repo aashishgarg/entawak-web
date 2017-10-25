@@ -1,29 +1,39 @@
 <div class="container teams_container">
 
+
   <div class="row">
     <div class="col-sm-6 time_start ml-auto">
-      <div id="ms_timer"></div>
+      <span id="ms_timer"></span>
     </div>
 
     <div class="col-sm-6">
       <div class="music_box row p-1">
         <div class="col-6 text-left p-0"><%= @audio&.audio_file_name %></div>
-        <div class="col-6 text-right p-0">03.44</div>
+        <div class="w-100 text-center mt-3">
+
         <span class=""><%= link_to change_audio_game_path do %>
-              <%= image_tag 'backward.png' %></span>
+              <%= image_tag 'backward.png' %>
               <% end %>
-          <audio id='audio'>
+        </span>
+
+          <span> <audio id='audio'>
             <source src="<%= @audio&.audio&.url %>">
           </audio>
-        <div class='btn-group btn-group-xs'>
-          <a href='javascript:void(0)' class="btn btn-default play_pause" data-toggle="tooltip" title="Preview"><i id="stateicon" class="fa fa-play-circle"></i></a>
-        </div>
-        <span class=""><%= link_to change_audio_game_path do %>
+
+          <div class='btn-group btn-group-xs'>
+            <a href='javascript:void(0)' class="btn btn-default play_pause" data-toggle="tooltip" title="Preview"><i id="stateicon" class="fa fa-play-circle"></i></a>
+          </div>
+           </span>
+
+          <span class=""><%= link_to change_audio_game_path do %>
               <%= image_tag 'forward.png' %></span>
               <% end %>
-          </div>
+            </div>
+      </div>
     </div>
   </div>
+
+
   <!--/row-->
   <div class="row">
 
