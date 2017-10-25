@@ -1,17 +1,18 @@
-<div class="main_container">
+<div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
 
-  <div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
+<div class="enter_name_code">
 
-  <div class="enter_name_code">
-
-    <h2 style="color:#DDAA3F">Creating Clans</h2>
-
-  </div>
-
-
-  <footer class="footer_1">
-    Sharpen Pencils and Get Ready
-
-  </footer>
+  <h2 style="color:#DDAA3F">Creating Clans</h2>
 
 </div>
+
+
+<footer class="footer_1">
+  Sharpen Pencils and Get Ready
+
+</footer>
+
+
+<script>
+    teamNotify("<%== @student.id %>")
+</script>

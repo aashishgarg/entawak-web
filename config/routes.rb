@@ -30,5 +30,8 @@ Rails.application.routes.draw do
     collection do
       get :welcome
     end
+    member do
+      get :team
+    end
   end
 end

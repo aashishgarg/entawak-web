@@ -1,14 +1,9 @@
-<div class="main_container">
+<div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
 
-  <div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
-
-  <div class="enter_name_code">
-    <%= form_with model: @game.students.build, local: true do |f| %>
-        <%= f.text_field :name, placeholder: 'Name', class: 'student_name' %>
-        <%= f.hidden_field :secret_knock, value: @game.secret_knock, placeholder: 'Name', class: 'student_name' %>
-        <%= f.submit 'Enter', class: 'btn primery-gradient-l-r student_button' %>
-    <% end %>
-  </div>
-
-
+<div class="enter_name_code">
+  <%= form_with model: @game.students.build, local: true do |f| %>
+      <%= f.text_field :name, placeholder: 'Name', class: 'student_name' %>
+      <%= f.hidden_field :secret_knock, value: @game.secret_knock, placeholder: 'Name', class: 'student_name' %>
+      <%= f.submit 'Enter', class: 'btn primery-gradient-l-r student_button' %>
+  <% end %>
 </div>

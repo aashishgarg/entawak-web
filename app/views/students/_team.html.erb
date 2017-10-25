@@ -1,0 +1,21 @@
+<h3 class="Find_your_clan mt-4">Find your clan and sit together!</h3>
+<div class="row calns_row">
+  <div class="col-sm-12">
+    <% if team.present? %>
+        <ul class="list-group clans blue">
+          <li class="list-group-item clan_heading"><%= team.name %> Clan</li>
+          <% team.students.each do |student| %>
+              <li class="list-group-item"><%= student.name %></li>
+          <% end %>
+        </ul>
+    <% end %>
+  </div>
+</div><!--/row-->
+
+<div class="text-center">
+                            <span class="btn primery-gradient-l-r student_button">
+                            <a href="question_1.html">Get Ready</a>
+                            </span>
+</div>
+
+
