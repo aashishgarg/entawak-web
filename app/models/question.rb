@@ -6,4 +6,9 @@ class Question < ApplicationRecord
   #============== Validations ==================
   validates :questionaire, presence: true
 
+  def move_to_next_question
+    ActionCable.server.broadcast "game_#{}", name
+    ActionCable.server.broadcast "team_#{}", name
+  end
+
 end

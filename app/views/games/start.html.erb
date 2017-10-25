@@ -2,18 +2,18 @@
 
   <div class="row">
     <div class="col-sm-6 time_start ml-auto">
-      30:00
+      <div id="ms_timer"></div>
     </div>
 
     <div class="col-sm-6">
       <div class="music_box row p-1">
-        <div class="col-6 text-left p-0"><%= @audio.audio_file_name %></div>
+        <div class="col-6 text-left p-0"><%= @audio&.audio_file_name %></div>
         <div class="col-6 text-right p-0">03.44</div>
 
 
         <span class=""><%= image_tag 'backward.png' %></span>
         <audio id='audio'>
-          <source src="<%= @audio.audio.url %>">
+          <source src="<%= @audio&.audio&.url %>">
         </audio>
         <div class="btn-group btn-group-xs">
           <a href='javascript:void(0)' class="btn btn-default play_pause" data-toggle="tooltip" title="Preview"><i id="stateicon" class="fa fa-play-circle"></i></a>
@@ -118,13 +118,14 @@
 
   <div class="text-right">
             <span class="outer_btn text-center primery-gradient-l-r">
-  <a href="#" class="">Pause Game</a>
+    <%= button_tag 'Pause Game', id: 'pause' %>
                   </span>
   </div>
 
 
 </div>
 <script>
+
     $('.play_pause').on('click', function () {
         aud_play_pause()
     });
@@ -141,4 +142,9 @@
             myAudio.pause();
         }
     }
+
+    $("#ms_timer").countdowntimer({minutes: 30, size: 'lg', pauseButton: "pause"});
+    $('.pause').on('click', function () {
+        $("#ms_timer").countdowntimer({minutes: 30, size: 'lg'});
+    })
 </script>

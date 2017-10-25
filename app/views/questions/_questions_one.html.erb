@@ -1,0 +1,51 @@
+<%= form_for(question, url: submit_question_path, method: 'post', class: 'mt-4') do |f| %>
+    <div class="form-group">
+      <label class="form_heading"><%= question.statement %></label>
+
+      <div class="form-group">
+        <%= f.text_field :answer, class: 'form-control show_ans_box answer' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 1} %>
+    </div>
+
+    <div class="form-group">
+      <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 2} %>
+
+    </div>
+
+    <div class="form-group">
+      <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 3} %>
+    </div>
+
+    <div class="text-center">
+
+      <%= f.submit 'Submit', class: 'btn primery-gradient-l-r student_button' %>
+    </div>
+
+    <div class="Scream">
+      <a href="#" data-toggle="modal" data-target="#ScreamModal">Scream</a>
+    </div>
+
+    <div class="modal fade" id="ScreamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Are you sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Yes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+<script>
+    populate_answer()
+</script>

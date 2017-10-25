@@ -1,24 +1,16 @@
-function notify_start_game(gameID) {
-    console.log(gameID);
+function notify_start_game(questionID) {
+    console.log(questionID);
     App.startGameChannel = App.cable.subscriptions.create({
         channel: "StartGameChannel",
-        room: gameID
+        question: questionID
     }, {
         received: function (data) {
             console.log(this);
-            return this.appendLine(data);
-        },
-        appendLine: function (data) {
-            var html;
-            html = this.createLine(data);
-            return $("[data-chat-room='students']").append(html);
-        },
-        createLine: function (data) {
-            return "<div class='col-4'>" +
-                "<div class='col-12 text-truncate'>" + data +
-                "<i class='fa fa-times' aria-hidden='true'></i>" +
-                "</div>" +
-                "</div>";
+            $.ajax({
+                url: '/questions/' + questionID,
+                method: 'GET',
+                dataType: 'script'
+            })
         }
     });
 }

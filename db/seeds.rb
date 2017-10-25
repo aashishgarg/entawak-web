@@ -27,7 +27,6 @@ Team::CLAN_NAMES.each do |clan|
 
         questionaire.questions.create(statement: "What's Mappening?", description: 'Match letters to question numbers. Translate "FACE" to numbers.', answer: '8369', hint: 'What numbers spell face?', category: '4 Number')
 
-
         questionaire.questions.create(statement: 'Africa in Pieces', description: 'Which countries have the given independence days. Letters spell the answer. Uganda (W), Egypt (O), Chad (R), Botswana (L), Morocco (D)', answer: 'WORLD', hint: 'Hint: Which countries have these independence dates?', category: 'Word')
 
         questionaire.questions.create(statement: 'Driftin Away', description: 'Answer questions and circle each of these letters L=left, R=right, U=up,D=down. continents, pangaea, continentaL DRift, afRica, aRctic, Rock', answer: 'LDRRRR', hint: 'R=right, U=up, L=left, D=down. Which of these are found in the answers?', category: 'Directional')
@@ -36,7 +35,6 @@ Team::CLAN_NAMES.each do |clan|
       when 'green'
 
         questionaire.questions.create(statement: 'Landformula', description: 'Answer questions. Questions where the second word is correct give the digits.', answer: '145', hint: "Which question's answers are the second word?", category: 'Word')
-
 
         questionaire.questions.create(statement: 'Speech Teach', description: 'Put Gettysburg Address in order.Numbers spell code.', answer: '2724', hint: 'Google the first line to find which speech.Put in order to find number code.', category: 'Word')
 
@@ -83,6 +81,7 @@ Team::CLAN_NAMES.each do |clan|
         questionaire.questions.create(statement: 'Exploration', description: 'No CAGE could hold these explorers.Which numbers match the CAGE? C=4,A=2,G=3,E=5', answer: '4235', hint: 'Which numbers spell CAGE?', category: '4 Number')
 
         questionaire.questions.create(statement: 'Earthwords', description: 'The first letter of the answers for 38456. The first letter of the answer for question 3, 8, 4, 5, 6 in order.', answer: 'TIRED', hint: 'Lithosphere contains up parts of two layers.', category: 'Word')
+
         questionaire.questions.create(statement: 'Division Hero', description: 'Start remainder 0,end remainder 8.Begin at the answer with R=0 more towards R=1,R=2...R=8', answer: 'RULULDLD', hint: '5 into 20 has remainder 0, so start there,Move 8 times.', category: 'Directional')
       else
     end

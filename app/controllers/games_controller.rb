@@ -40,7 +40,9 @@ class GamesController < ApplicationController
   end
 
   def start
-    @game.teacher.notify_start_game(@game)
+    @game.teams.each do |team|
+      ActionCable.server.broadcast "start_game_#{team.questions.first.id}", team.questions.first.id
+    end
   end
 
   def change_audio
