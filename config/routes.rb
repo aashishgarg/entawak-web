@@ -31,5 +31,8 @@ Rails.application.routes.draw do
       get :welcome
       get :game
     end
+    member do
+      get :team
+    end
   end
 end

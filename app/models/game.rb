@@ -25,10 +25,14 @@ class Game < ApplicationRecord
     end
   end
 
+  def broadcast_team
+    students.each {|student| ActionCable.server.broadcast "team_#{student.id}", student.id}
+  end
+
   private
 
   def assign_secret_knock
-    self.secret_knock = 6.times.map { rand(1..9) }.join.to_i
+    self.secret_knock = 6.times.map {rand(1..9)}.join.to_i
   end
 end
 

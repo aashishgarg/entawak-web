@@ -17,7 +17,7 @@ end
 game.assign_team_and_students
 
 
-Team::CLAN_NAME.each do |clan|
+Team::CLAN_NAMES.each do |clan|
   Team.where(name: clan).each do |team|
     questionaire = team.create_questionaire(name: clan)
     case clan

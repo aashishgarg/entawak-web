@@ -36,6 +36,7 @@ class GamesController < ApplicationController
 
   def team_assigmnent
     @game.assign_team_and_students
+    @game.broadcast_team
   end
 
   def start

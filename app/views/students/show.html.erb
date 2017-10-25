@@ -1,20 +1,18 @@
-<div class="main_container">
+<div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
 
-  <div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
+<div class="enter_name_code">
 
-  <div class="enter_name_code">
+  <h2 style="color:#DDAA3F">Creating Clans</h2>
 
-    <h2 style="color:#DDAA3F">Creating Clans</h2>
+</div>
 
-  </div>
-  <%= @student.inspect %>
 
-  <footer class="footer_1">
-    Sharpen Pencils and Get Ready
+<footer class="footer_1">
+  Sharpen Pencils and Get Ready
 
-  </footer>
+</footer>
 
 </div>
 <script>
-    notify_start_game("<%= @student.team.try(:game)%>")
+    teamNotify("<%== @student.id %>")
 </script>
