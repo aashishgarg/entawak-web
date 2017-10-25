@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
 
   ########## Filters ########################
   skip_before_action :authenticate_teacher!
-  before_action :set_game, only: [:new, :create]
+  before_action :set_game, only: [:new, :create, :game]
 
   def welcome
   end
@@ -26,7 +26,10 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @student=Student.where(id: params[:id]).take
+  end
 
+  def game
   end
 
   def destroy

@@ -7,7 +7,7 @@
     <h2 style="color:#DDAA3F">Creating Clans</h2>
 
   </div>
-
+  <%= @student.inspect %>
 
   <footer class="footer_1">
     Sharpen Pencils and Get Ready
@@ -15,3 +15,6 @@
   </footer>
 
 </div>
+<script>
+    notify_start_game("<%= @student.team.try(:game)%>")
+</script>

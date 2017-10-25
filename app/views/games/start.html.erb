@@ -9,18 +9,22 @@
       <div class="music_box row p-1">
         <div class="col-6 text-left p-0"><%= @audio.audio_file_name %></div>
         <div class="col-6 text-right p-0">03.44</div>
-        <div class="w-100 text-center mt-3">
-          <span class=""><%= link_to change_audio_game_path, remote: true do %>
-                        <%= image_tag 'backward.png' %></span>
-            <% end %>
-            <%= audio_tag @audio.audio.url, autoplay: false, controls: true, class: 'my_player' %>
-            <span class=""><%= image_tag 'forward.png' %></span>
-            </div>
+
+
+        <span class=""><%= image_tag 'backward.png' %></span>
+        <audio id='audio'>
+          <source src="<%= @audio.audio.url %>">
+        </audio>
+        <div class="btn-group btn-group-xs">
+          <a href='javascript:void(0)' class="btn btn-default play_pause" data-toggle="tooltip" title="Preview"><i id="stateicon" class="fa fa-play-circle"></i></a>
+        </div>
+        <span class=""><%= image_tag 'forward.png' %></span>
       </div>
     </div>
   </div>
   <!--/row-->
   <div class="row">
+
     <div class="col-sm-6 score_clan red">
       <h2>Red Clan <span>Hint:1</span></h2>
       <table width="100%">
@@ -106,11 +110,35 @@
       </table>
     </div>
     <!--/score_clan-->
+
+
   </div>
   <!--/row-->
+
+
   <div class="text-right">
             <span class="outer_btn text-center primery-gradient-l-r">
   <a href="#" class="">Pause Game</a>
                   </span>
   </div>
+
+
 </div>
+<script>
+    $('.play_pause').on('click', function () {
+        aud_play_pause()
+    });
+
+    function aud_play_pause() {
+        var myAudio = document.getElementById('audio');
+        if (myAudio.paused) {
+            $('#stateicon').removeClass('fa fa-play-circle');
+            $('#stateicon').addClass('fa fa-pause-circle');
+            myAudio.play();
+        } else {
+            $('#stateicon').removeClass('fa fa-pause-circle');
+            $('#stateicon').addClass('fa fa-play-circle');
+            myAudio.pause();
+        }
+    }
+</script>

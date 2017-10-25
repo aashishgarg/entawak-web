@@ -39,7 +39,7 @@ class GamesController < ApplicationController
   end
 
   def start
-
+    @game.teacher.notify_start_game(@game)
   end
 
   def change_audio
