@@ -7,8 +7,8 @@ class Question < ApplicationRecord
   validates :questionaire, presence: true
 
   def move_to_next_question
-    ActionCable.server.broadcast "game_#{}", name
-    ActionCable.server.broadcast "team_#{}", name
+    ActionCable.server.broadcast "game_#{id}", name
+    ActionCable.server.broadcast "team_#{id}", name
   end
 
 end
