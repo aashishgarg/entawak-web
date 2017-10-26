@@ -1,16 +1,11 @@
-function teamNotify(studentID) {
+function teamNotify11(studentID) {
     App.team = App.cable.subscriptions.create({
         channel: "TeamChannel",
-        student: studentID
+        game: studentID
     }, {
         received: function (data) {
-            $.ajax({
-                type: "GET",
-                dataType: "script",
-                url: "/students/" + data + "/team",
-                success: function(data){}
-            });
-
+            console.log(data.id)
+            // location.href = "/teams/" + data.team_id
         }
     });
 }

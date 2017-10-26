@@ -13,7 +13,12 @@ class Student < ApplicationRecord
   private
 
   def notify_teacher
-    ActionCable.server.broadcast "game_#{game.id}", name
+    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    puts "-------------------------update"
+    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+
+
+    ActionCable.server.broadcast "game_#{game.id}", self.game
   end
 
 end

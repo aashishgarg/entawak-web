@@ -1,0 +1,4 @@
+<%= render(partial: 'team', locals: {team: @team}) %>
+<script>
+    startGame('<%= @team&.game.id%>')
+</script>

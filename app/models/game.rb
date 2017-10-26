@@ -16,17 +16,17 @@ class Game < ApplicationRecord
   # 1. Only is available when students count > 3
   # TODO: Please put down the other rules here
   def assign_team_and_students
-    return if students.count < 4
-
-    teams.destroy_all
-    Team::CLAN_NAMES.take(students.count.div(4)).each {|clan_name| teams.create(name: clan_name)}
-    students.zip(teams.cycle) do |student, team|
-      student.update(team: team)
+    if students.count >= 4
+      teams.destroy_all
+      Team::CLAN_NAMES.take(students.count.div(4)).each {|clan_name| teams.create(name: clan_name)}
+      students.zip(teams.cycle) do |student, team|
+        student.update(team: team)
+      end
     end
   end
 
   def broadcast_team
-    students.each {|student| ActionCable.server.broadcast "team_#{student.id}", student.id}
+    students.each {|student| ActionCable.server.broadcast "student_#{student.id}", student} if teams.present?
   end
 
   private

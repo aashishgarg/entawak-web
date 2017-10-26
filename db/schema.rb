@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20171026065322) do
 
-  create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.bigint "resource_id"
+    t.integer "resource_id"
     t.string "author_type"
-    t.bigint "author_id"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171026065322) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -43,51 +43,51 @@ ActiveRecord::Schema.define(version: 20171026065322) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "audios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "audios", force: :cascade do |t|
     t.string "url"
-    t.datetime "audio_updated_at"
-    t.integer "audio_file_size"
-    t.string "audio_content_type"
-    t.string "audio_file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "audio_file_name"
+    t.string "audio_content_type"
+    t.integer "audio_file_size"
+    t.datetime "audio_updated_at"
   end
 
-  create_table "games", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "teacher_id"
+  create_table "games", force: :cascade do |t|
+    t.integer "teacher_id"
     t.string "name"
-    t.bigint "secret_knock"
-    t.integer "duration"
-    t.boolean "state", default: true
-    t.integer "missing_devices"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "secret_knock", limit: 6
+    t.integer "duration"
+    t.integer "missing_devices"
+    t.boolean "state", default: true
     t.index ["teacher_id"], name: "index_games_on_teacher_id"
   end
 
-  create_table "questionaires", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "team_id"
+  create_table "questionaires", force: :cascade do |t|
+    t.integer "team_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_questionaires_on_team_id"
   end
 
-  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "questionaire_id"
+  create_table "questions", force: :cascade do |t|
+    t.integer "questionaire_id"
     t.string "statement"
-    t.string "description"
     t.string "answer"
-    t.boolean "answered", default: false
     t.string "hint"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.boolean "answered", default: false
     t.index ["questionaire_id"], name: "index_questions_on_questionaire_id"
   end
 
-  create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "game_id"
+  create_table "results", force: :cascade do |t|
+    t.integer "game_id"
     t.integer "team_id"
     t.integer "score"
     t.datetime "created_at", null: false
@@ -95,9 +95,9 @@ ActiveRecord::Schema.define(version: 20171026065322) do
     t.index ["game_id"], name: "index_results_on_game_id"
   end
 
-  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "team_id"
-    t.bigint "game_id"
+  create_table "students", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "game_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -105,8 +105,10 @@ ActiveRecord::Schema.define(version: 20171026065322) do
     t.index ["team_id"], name: "index_students_on_team_id"
   end
 
-  create_table "teachers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "teachers", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -117,18 +119,16 @@ ActiveRecord::Schema.define(version: 20171026065322) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
 
-  create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "game_id"
+  create_table "teams", force: :cascade do |t|
+    t.integer "game_id"
     t.string "name"
-    t.integer "hint_counter", default: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hint_counter", default: 4
     t.index ["game_id"], name: "index_teams_on_game_id"
   end
 

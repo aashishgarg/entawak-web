@@ -22,7 +22,6 @@ Rails.application.routes.draw do
       get :active_students
       get :start
       get :change_audio
-      get :team_assigmnent
       get :switch
     end
   end
@@ -32,13 +31,16 @@ Rails.application.routes.draw do
       get :welcome
       get :game
     end
-    member do
-      get :team
-    end
   end
   resources :questions, only: [:show] do
     member do
       post :submit
+    end
+  end
+
+  resources :teams, only: [:show] do
+    collection do
+      get :assign
     end
   end
 end

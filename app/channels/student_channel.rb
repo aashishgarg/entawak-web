@@ -1,6 +1,6 @@
-class StartGameChannel < ApplicationCable::Channel
+class StudentChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "start_game_#{params[:question]}"
+    stream_from "student_#{params[:student]}"
   end
 
   def unsubscribed
@@ -8,6 +8,7 @@ class StartGameChannel < ApplicationCable::Channel
   end
 
   def receive(data)
+    puts "---------team received---------#{data}"
     ActionCable.server.broadcast(current_game, data)
   end
 end

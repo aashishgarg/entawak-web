@@ -33,11 +33,6 @@ class GamesController < ApplicationController
     cookies.signed[:game_id] = @game.id
   end
 
-  def team_assigmnent
-    @game.assign_team_and_students
-    @game.broadcast_team
-  end
-
   def start
     @audio = Audio.all.sample(1).first
     @game.teams.each do |team|
@@ -53,10 +48,8 @@ class GamesController < ApplicationController
   def switch
     if @game.state
       @game.update(state: false)
-      puts "55555555555555555555555555555555555555555"
     else
       @game.update(state: true)
-      puts "2222222222222222222222222222222222222222"
     end
   end
 
