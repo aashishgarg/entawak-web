@@ -110,7 +110,21 @@
   <!--/row-->
   <div class="text-right">
             <span class="outer_btn text-center primery-gradient-l-r">
-  <a href="#" class="">Pause Game</a>
+  <%= link_to 'Pause Game', 'javascript:void(0);', id: 'resume_game' %>
                   </span>
   </div>
 </div>
+
+<script>
+  $('#resume_game').on('click',function(){
+      $.ajax({
+          type: "GET",
+          dataType: "script",
+          url: "<%== switch_game_path(@game) %>",
+          success: function(data){
+              console.log(data)
+          }
+      });
+
+  })
+</script>

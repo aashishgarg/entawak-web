@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   layout 'game_layout', except: [:introduction]
 
   ########## Filters ########################
-  before_action :fetch_game, only: [:update, :active_students, :team_assigmnent, :start, :change_audio, :introduction]
+  before_action :fetch_game, except: [:new, :create]
   before_action :pick_random_song, only: [:start, :change_audio]
 
   def introduction
@@ -45,6 +45,16 @@ class GamesController < ApplicationController
 
   def change_audio
     render 'start'
+  end
+
+  def switch
+    if @game.state
+      @game.update(state: false)
+      puts "55555555555555555555555555555555555555555"
+    else
+      @game.update(state: true)
+      puts "2222222222222222222222222222222222222222"
+    end
   end
 
   private

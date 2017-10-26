@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :start
       get :change_audio
       get :team_assigmnent
+      get :switch
     end
   end
 

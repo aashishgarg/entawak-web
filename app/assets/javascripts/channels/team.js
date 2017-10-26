@@ -4,7 +4,6 @@ function teamNotify(studentID) {
         student: studentID
     }, {
         received: function (data) {
-            console.log("/students/" + data + "/team");
             $.ajax({
                 type: "GET",
                 dataType: "script",
