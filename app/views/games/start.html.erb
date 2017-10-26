@@ -122,7 +122,7 @@
   <!--/row-->
   <div class="text-right">
             <span class="outer_btn text-center primery-gradient-l-r">
-    <%= button_tag 'Pause Game', id: 'pause' %>
+    <%= link_to 'Pause Game', 'javascript:void(0)', id: 'pause' %>
                   </span>
   </div>
 
@@ -159,7 +159,4 @@
     }
 
     $("#ms_timer").countdowntimer({minutes: 30, size: 'lg', pauseButton: "pause"});
-    $('.pause').on('click', function () {
-        $("#ms_timer").countdowntimer({minutes: 30, size: 'lg'});
-    })
 </script>
