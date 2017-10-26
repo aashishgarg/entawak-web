@@ -31,102 +31,30 @@
       </div>
     </div>
   </div>
-  <!--/row-->
   <div class="row">
-    <div class="col-sm-6 score_clan red">
-      <h2>Red Clan <span>Hint:1</span></h2>
-      <table width="100%">
-        <tr>
-          <td align="right" valign="bottom"><%= image_tag 'unlock.png', class: 'lock_img' %> 4</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> W</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %>
-            <%= image_tag 'direction_img.png' %></td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> 3</td>
-        </tr>
-      </table>
-    </div>
-    <!--/score_clan-->
-
-
-    <div class="col-sm-6 score_clan yellow">
-      <h2>Yellow Clan</h2>
-      <table width="100%">
-        <tr>
-          <td align="right" valign="bottom"><%= image_tag 'unlock.png', class: 'lock_img' %> 4</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> W</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %>
-            <%= image_tag 'direction_img.png' %></td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> 3</td>
-        </tr>
-
-      </table>
-    </div>
-    <!--/score_clan-->
-
-    <div class="col-sm-6 score_clan green">
-      <h2>Green Clan</h2>
-      <table width="100%">
-        <tr>
-          <td align="right" valign="bottom"><%= image_tag 'unlock.png', class: 'lock_img' %> 4</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> W</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> <%= image_tag 'direction_img.png' %></td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> 3</td>
-        </tr>
-
-      </table>
-    </div>
-    <!--/score_clan-->
-
-    <div class="col-sm-6 score_clan blue">
-      <h2>Blue Clan</h2>
-      <table width="100%">
-        <tr>
-          <td align="right" valign="bottom"><%= image_tag 'unlock.png', class: 'lock_img' %> 4</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> W</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> <%= image_tag 'direction_img.png' %></td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> 3</td>
-        </tr>
-
-      </table>
-    </div>
-    <!--/score_clan-->
-
-    <div class="col-sm-6 score_clan purple">
-      <h2>Purple Clan</h2>
-      <table width="100%">
-        <tr>
-          <td align="right" valign="bottom"><%= image_tag 'unlock.png', class: 'lock_img' %> 4</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> W</td>
-          <td><%= image_tag 'lock.png', class: "lock_img" %>
-            <%= image_tag 'direction_img.png' %></td>
-          <td><%= image_tag 'lock.png', class: "lock_img" %> 3</td>
-        </tr>
-      </table>
-    </div>
-    <!--/score_clan-->
-
-    <div class="col-sm-6 score_clan pink">
-      <h2>Pink Clan</h2>
-      <table width="100%">
-        <tr>
-          <td align="right" valign="bottom"><%= image_tag 'unlock.png', class: 'lock_img' %> 4</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> W</td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> <%= image_tag 'direction_img.png' %></td>
-          <td><%= image_tag 'lock.png', class: 'lock_img' %> 3</td>
-        </tr>
-
-      </table>
-    </div>
-    <!--/score_clan-->
+    <% @game.teams.each do |team| %>
+        <div class="col-sm-6 score_clan <%= team.name %>">
+          <h2><%= team.name.titleize %> <span>Hint:1</span></h2>
+          <table width="100%">
+            <tr>
+              <td align="right" valign="bottom"><%= image_tag lock_image(team.questions.first), class: 'lock_img' %>4
+              </td>
+              <td><%= image_tag lock_image(team.questions.second), class: 'lock_img' %> W</td>
+              <td><%= image_tag lock_image(team.questions.third), class: 'lock_img' %><%= image_tag 'direction_img.png' %></td>
+              <td><%= image_tag lock_image(team.questions.fourth), class: 'lock_img' %> 3</td>
+            </tr>
+          </table>
+        </div>
+    <% end %>
   </div>
+
+  <!--/score_clan-->
   <!--/row-->
   <div class="text-right">
             <span class="outer_btn text-center primery-gradient-l-r">
-    <%= link_to 'Pause Game', 'javascript:void(0)', id: 'pause' %>
-                  </span>
+              <%= link_to 'Pause Game', 'javascript:void(0)', id: 'pause' %>
+            </span>
   </div>
-
-
 </div>
 
 <script>
