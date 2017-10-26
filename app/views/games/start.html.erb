@@ -122,24 +122,25 @@
   <!--/row-->
   <div class="text-right">
             <span class="outer_btn text-center primery-gradient-l-r">
-  <%= link_to 'Pause Game', 'javascript:void(0);', id: 'resume_game' %>
+    <%= button_tag 'Pause Game', id: 'pause' %>
                   </span>
   </div>
+
+
 </div>
 
 <script>
-
-    $('#resume_game').on('click',function(){
+    $('#pause').on('click', function () {
         $.ajax({
             type: "GET",
             dataType: "script",
             url: "<%== switch_game_path(@game) %>",
-            success: function(data){
+            success: function (data) {
                 console.log(data)
             }
         });
+    });
 
-    })
     $('.play_pause').on('click', function () {
         aud_play_pause()
     });
