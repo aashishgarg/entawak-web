@@ -1,0 +1,32 @@
+<%= form_for(question, url: submit_question_path, method: 'post', class: 'mt-4') do |f| %>
+    <div class="form-group">
+      <label class="form_heading"><%= question.statement%></label>
+
+      <div class="form-group">
+        <%= f.text_field :answer, class: 'form-control show_ans_box answer' %>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option' %>
+    </div>
+
+    <div class="form-group">
+      <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option' %>
+    </div>
+
+    <div class="form-group">
+      <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option' %>
+    </div>
+    <div class="text-center">
+      <%= f.submit 'Submit', class: 'btn primery-gradient-l-r student_button' %>
+    </div>
+
+    <div class="Scream">
+      <a href="#" data-toggle="modal" data-target="#ScreamModal">Scream</a>
+    </div>
+    <%= render partial: 'questions/scream'%>
+<% end %>
+<script>
+    populate_answer()
+</script>

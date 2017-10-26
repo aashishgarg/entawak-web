@@ -1,0 +1,43 @@
+<%= form_for(question, url: submit_question_path, method: 'post', class: 'mt-4') do |f| %>
+    <div class="form-group">
+      <label class="form_heading"><%= question.statement%></label>
+      <div class="form-group">
+        <div class=" show_ans_box">
+          <i class="fa fa-arrow-right p-2 " aria-hidden="true"></i>
+          <i class="fa fa-arrow-up p-2" aria-hidden="true"></i>
+          <i class="fa fa-arrow-up p-2" aria-hidden="true"></i>
+          <i class="fa fa-arrow-up p-2" aria-hidden="true"></i>
+          <i class="fa fa-arrow-left p-2" aria-hidden="true"></i>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><input class="option-input dir_up" type="radio" name="dir_btn" value="up"></div>
+        <div class="col-4"></div>
+
+        <div class="col-4"><input class="option-input dir_left" type="radio" name="dir_btn" value="left"></div>
+        <div class="col-4"></div>
+        <div class="col-4"><input class="option-input dir_right" type="radio" name="dir_btn" value="right"></div>
+
+        <div class="col-4"></div>
+        <div class="col-4"><input class="option-input dir_down" type="radio" name="dir_btn" value="down"></div>
+        <div class="col-4"></div>
+      </div><!--/row-->
+
+    </div>
+
+    <div class="text-center">
+      <a href="question_4.html" class="btn primery-gradient-l-r student_button">Submit</a>
+    </div>
+
+    <div class="Scream">
+      <a href="#" data-toggle="modal" data-target="#ScreamModal">Scream</a>
+    </div>
+    <%= render partial: 'questions/scream' %>
+<% end %>
+
+
+
+

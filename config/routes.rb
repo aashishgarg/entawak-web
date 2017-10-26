@@ -30,9 +30,15 @@ Rails.application.routes.draw do
   resources :students do
     collection do
       get :welcome
+      get :game
     end
     member do
       get :team
+    end
+  end
+  resources :questions, only: [:show] do
+    member do
+      post :submit
     end
   end
 end

@@ -1,0 +1,20 @@
+<table class="header">
+  <tr>
+    <td align="left"><strong><%= question&.questionaire&.team&.name %></strong></td>
+    <td align="center">21:15</td>
+    <td align="right">Hints:3</td>
+  </tr>
+</table>
+<div class="score_clan">
+  <%= render partial: 'questions/lock_status' %>
+  <% case question.category %>
+  <% when '3 Number' %>
+      <%= render partial: 'questions/questions_one', locals: {question: question} %>
+  <% when '4 Number' %>
+      <%= render partial: 'questions/questions_two', locals: {question: question} %>
+  <% when 'Word' %>
+      <%= render partial: 'questions/questions_three', locals: {question: question} %>
+  <% when 'Directional' %>
+      <%= render partial: 'questions/questions_four', locals: {question: question} %>
+  <% end %>
+</div>

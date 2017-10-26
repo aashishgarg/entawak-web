@@ -5,7 +5,6 @@ class GamesController < ApplicationController
 
   ########## Filters ########################
   before_action :fetch_game, except: [:new, :create]
-  before_action :pick_random_song, only: [:start, :change_audio]
 
   def introduction
   end
@@ -40,10 +39,14 @@ class GamesController < ApplicationController
   end
 
   def start
-
+    @audio = Audio.all.sample(1).first
+    @game.teams.each do |team|
+      ActionCable.server.broadcast "start_game_#{team.questions.first.id}", team.questions.first.id
+    end
   end
 
   def change_audio
+    @audio= Audio.all.sample(1).first
     render 'start'
   end
 
@@ -61,10 +64,6 @@ class GamesController < ApplicationController
 
   def fetch_game
     @game = current_teacher.games.find(params[:id])
-  end
-
-  def pick_random_song
-    @audio = Audio.all.sample(1).first
   end
 
 end

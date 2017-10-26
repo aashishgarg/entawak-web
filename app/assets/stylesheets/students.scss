@@ -3,7 +3,6 @@ body{
   font-family: gotham-regular;
 }
 
-
 @font-face {
   font-family: gotham-regular;
   src: url('gotham-regular.ttf') format('truetype');
@@ -26,27 +25,29 @@ body {
   height: 100%;
 }
 
-
 /***********************Style**********************/
 
-img{    max-width: 100%;
-  height: auto;}
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-
-.light_bg{
+.light_bg {
   background: rgba(245, 242, 246, .75);
   padding: 40px 0;
   margin-top: 40px;
 }
 
-.primery-color{color: #7d32dd;}
+.primery-color {
+  color: #7d32dd;
+}
 
-.primery-gradient-l-r{
+.primery-gradient-l-r {
   background-image: linear-gradient(to left, #AB41D1 0%, #6B2BDC 100%);
   border: none;
 }
 
-.main_container{
+.main_container {
   margin: auto;
   max-width: 500px;
   background: #fff;
@@ -57,16 +58,17 @@ img{    max-width: 100%;
   position: relative;
 }
 
-
-.enter_name_code{
+.enter_name_code {
   text-align: center;
   max-width: 300px;
   margin: auto;
 }
 
-.enter_name_code h2{color:#555555;}
+.enter_name_code h2 {
+  color: #555555;
+}
 
-.enter_name_code input{
+.enter_name_code input {
   text-align: center;
   font-size: 22px;
   border: 0;
@@ -76,12 +78,13 @@ img{    max-width: 100%;
   width: 100%;
   margin: 15px 0;
 }
-.student_name{
+
+.student_name {
   letter-spacing: normal !important;
   text-align: left !important;
 }
 
-.student_button{
+.student_button {
   width: 150px;
   text-align: center;
   border-radius: 40px;
@@ -90,19 +93,22 @@ img{    max-width: 100%;
   margin-top: 25px;
 }
 
-.student_button button{
+.student_button button {
   color: #fff;
   text-decoration: none;
   display: block;
   text-align: center;
-  background: none; border: none;
+  background: none;
+  border: none;
 }
-.student_button a{
+
+.student_button a {
   color: #fff;
   text-decoration: none;
   display: block;
   text-align: center;
-  background: none; border: none;
+  background: none;
+  border: none;
 }
 
 @keyframes click-wave {
@@ -138,23 +144,27 @@ img{    max-width: 100%;
   outline: none;
   z-index: 1000;
 }
-.dir_up{
+
+.dir_up {
   background: image_url('direction_up.png') center no-repeat;
 }
-.dir_down{
+
+.dir_down {
   background: image_url('direction_down.png') center no-repeat;
 }
-.dir_right{
+
+.dir_right {
   background: image_url('direction_right.png') center no-repeat;
 }
-.dir_left{
+
+.dir_left {
   background: image_url('direction_left.png') center no-repeat;
 }
-
 
 .option-input:hover {
   background-color: #a457d9 !important;
 }
+
 .option-input:checked {
   background-color: #a457d9 !important;
 }
@@ -170,13 +180,7 @@ img{    max-width: 100%;
   z-index: 100;
 }
 
-
-
-
-
-
-
-.footer_1{
+.footer_1 {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -187,88 +191,91 @@ img{    max-width: 100%;
   left: 0;
 }
 
-
-.Find_your_clan{
+.Find_your_clan {
   font-size: 22px;
   color: #626261;
   font-family: gotham-bold;
 }
 
-.clans.blue{
+.clans.blue {
   background: rgba(140, 186, 232, .20);
 }
-.clans.blue .clan_heading{
+
+.clans.blue .clan_heading {
   background: rgb(140, 186, 232);
 }
 
-.clans li{
+.clans li {
   background: none
 }
-.clan_heading{
+
+.clan_heading {
   font-size: 22px;
   padding-top: 20px;
   padding-bottom: 16px;
   color: #fff;
 }
 
-.header{
+.header {
   width: calc(100% + 30px);
   border-bottom: 1px solid #ddd;
   margin-left: -15px;
 }
 
-.header td{
+.header td {
   padding: 15px 10px;
 }
 
-.header td strong{
+.header td strong {
   font-size: 20px;
   font-family: gotham-bold;
 }
 
-
-
-.score_clan{
+.score_clan {
   margin: auto;
   width: 90%;
 
 }
-.score_clan table{ border-radius: 3px;}
-.score_clan table td{
+
+.score_clan table {
+  border-radius: 3px;
+}
+
+.score_clan table td {
   font-size: 26px;
   vertical-align: middle;
   text-align: center;
   padding: 10px 0;
 }
-.score_clan table td.active{border-bottom: 2px solid rgb(164, 87, 217);}
 
+.score_clan table td.active {
+  border-bottom: 2px solid rgb(164, 87, 217);
+}
 
-
-.lock_img{
+.lock_img {
   max-height: 30px;
   vertical-align: sub;
 }
 
-.form_heading{
+.form_heading {
   color: #444444;
   font-size: 20px;
 }
 
-
-.score_clan .form-group{
+.score_clan .form-group {
   margin-bottom: 25px;
 }
 
-.score_clan .form-group select{
+.score_clan .form-group select {
   height: 45px !important;
 }
 
-.Scream{
+.Scream {
   margin: 40px 0;
   text-align: center
 }
 
-.Scream a{
+.Scream a {
   width: 150px;
   text-align: center;
   border-radius: 40px;
@@ -279,9 +286,7 @@ img{    max-width: 100%;
   text-decoration: none;
 }
 
-
-
-.hint_show{
+.hint_show {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -289,27 +294,28 @@ img{    max-width: 100%;
   text-align: center;
 }
 
-.hint_show strong{
+.hint_show strong {
   font-family: gotham-bold;
 
 }
 
-
-
-.thums_up{
+.thums_up {
   margin-top: 15%;
 }
 
-.thums_up p{
+.thums_up p {
   margin-top: 40px;
   font-size: 26px;
-  color: #353434;}
+  color: #353434;
+}
 
-
-
-.show_ans_box{
+.show_ans_box {
   height: 45px;
   border: 2px solid rgba(160, 85, 225, 0.61) !important;
   background-color: transparent !important;
   font-size: 22px;
+}
+
+.yellow_text {
+  color: #DDAA3F
 }

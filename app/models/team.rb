@@ -13,4 +13,12 @@ class Team < ApplicationRecord
   #============== Validations ==================
   validates :game, presence: true
 
+  #============= Callbacks =====================
+  after_create :populate_questionaire
+
+
+  private
+  def populate_questionaire
+    create_questionaire(name: name)
+  end
 end

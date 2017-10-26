@@ -1,0 +1,29 @@
+<form class="mt-4">
+
+  <div class="form-group">
+    <label class="form_heading"><%= question.statement %></label>
+    <div class="form-group">
+      <input type="text" value="7" class="form-control show_ans_box" readonly>
+    </div>
+
+    <select class="form-control">
+      <option>7</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+  </div>
+
+  <div class="text-center">
+                                <span class="btn primery-gradient-l-r student_button">
+                                <a href="thums_up.html">Submit</a>
+                                </span>
+  </div>
+
+  <div class="Scream">
+    <a href="#" data-toggle="modal" data-target="#ScreamModal">Scream</a>
+  </div>
+
+  <%= render partial: 'questions/scream' %>
+</form>
+
