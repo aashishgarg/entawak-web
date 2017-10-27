@@ -27,7 +27,6 @@ function play_pause_audio() {
 function show_prepopulated_field() {
     var answer = [];
     $.each($('.main_container').find('.select_option'), function (index, element) {
-        console.log($(element).val());
         answer[parseInt($(element).data('index')) || index] = $(element).val();
     });
     $('.main_container').find('.answer').val(answer.join(''));

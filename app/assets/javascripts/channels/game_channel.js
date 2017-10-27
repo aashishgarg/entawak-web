@@ -5,7 +5,6 @@ function studentNotify(gameId) {
     }, {
         received: function (data) {
             if (data['game']) {
-                console.log('inside notify student');
                 $.ajax({
                     type: "GET",
                     dataType: "script",
