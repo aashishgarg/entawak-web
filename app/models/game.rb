@@ -1,5 +1,8 @@
 class Game < ApplicationRecord
 
+  #============== Constants =====================
+  DURATION = 30
+
   #============== Associations ==================
   belongs_to :teacher, inverse_of: :games
   has_many :students, inverse_of: :game, dependent: :destroy
@@ -27,6 +30,10 @@ class Game < ApplicationRecord
 
   def broadcast_team
     students.each {|student| ActionCable.server.broadcast "student_#{student.id}", student} if teams.present?
+  end
+
+  def duration
+    ((end_at - Time.now)/1.minutes).to_i
   end
 
   private

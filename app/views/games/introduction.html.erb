@@ -5,9 +5,10 @@
     <div class="col-md-4">
       <div class="text-center game_time">
 
-        <a href="#"><%= image_tag 'plus.png' %></a>
-        30 minutes
-        <a href="#"><%= image_tag 'minus.png' %></a>
+        <a href="javascript:void(0);" class="time_changer" data-type="plus"><%= image_tag 'minus.png' %></a>
+        <span class="game_duration">30 </span> minutes
+        <a href="javascript:void(0);" class="time_changer" data-type="minus">
+          <%= image_tag 'plus.png' %></a>
       </div>
     </div>
   </div><!--/row-->
@@ -25,9 +26,23 @@
 
   <div class="text-right">
   <span class="outer_btn text-center primery-gradient-l-r">
-    <%= link_to 'Start Game', start_game_path(@game) %>
+    <%= link_to 'Start Game', start_game_path(@game), class: 'start_game' %>
   </span>
   </div>
 
 
 </div><!--container-fluid-->
+
+<script>
+    var timeSpan = <%= Game::DURATION %>;
+    var action = $('a.start_game').attr('href');
+    $('a.time_changer').on('click', function () {
+        if ($(this).data('type') == 'plus') {
+            timeSpan -= 1;
+        } else {
+            timeSpan += 1;
+        }
+        $('span.game_duration').html(timeSpan);
+        $('a.start_game').attr('href', action + '?duration=' + timeSpan)
+    });
+</script>

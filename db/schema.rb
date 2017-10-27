@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027093946) do
+ActiveRecord::Schema.define(version: 20171027130233) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -59,9 +59,10 @@ ActiveRecord::Schema.define(version: 20171027093946) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "secret_knock", limit: 6
-    t.integer "duration"
     t.integer "missing_devices"
     t.boolean "state", default: true
+    t.datetime "end_at"
+    t.datetime "pause_at"
     t.index ["teacher_id"], name: "index_games_on_teacher_id"
   end
 

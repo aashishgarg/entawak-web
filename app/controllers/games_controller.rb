@@ -35,6 +35,8 @@ class GamesController < ApplicationController
   end
 
   def start
+    duration = params[:duration] || Game::DURATION
+    @game.update(end_at: (Time.now + duration.to_i.minutes))
     @audio = Audio.all.sample(1).first
     @game.teams.each do |team|
       ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
@@ -47,14 +49,21 @@ class GamesController < ApplicationController
 
   def switch
     if @game.state
-      ActionCable.server.broadcast "game_#{@game.id}", {'pause' => @game} if @game.update(state: false)
+      if @game.update(state: false, pause_at: Time.now)
+        ActionCable.server.broadcast "game_#{@game.id}", {'pause' => @game}
+      end
     else
-      ActionCable.server.broadcast "game_#{@game.id}", {'play' => @game} if @game.update(state: true)
+      if @game.update(state: true, end_at: @game.end_at + (@game.pause_at - @game.end_at))
+        @game.teams.each do |team|
+          ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
+        end
+      end
     end
   end
 
   def pause
     @game = Game.find_by(id: params[:id])
+    render layout: 'students'
   end
 
 

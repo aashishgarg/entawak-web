@@ -8,7 +8,6 @@ class TeamChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    puts "---------team received---------#{data}"
-    ActionCable.server.broadcast(current_game, data)
+    ActionCable.server.broadcast("team_#{data['game']}", data)
   end
 end

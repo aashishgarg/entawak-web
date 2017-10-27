@@ -10,5 +10,7 @@
 
 </div>
 <script>
-    gameState('<%= @game.id%>');
+    <% @game.teams.each do |team|%>
+    startGame('<%= team.id%>')
+    <% end %>
 </script>
