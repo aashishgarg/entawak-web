@@ -6,4 +6,7 @@ class Question < ApplicationRecord
   #============== Validations ==================
   validates :questionaire, presence: true
 
+  #====== Store ======================================================
+  store :serialized_options, accessors: [:options], coder: Hash
+
 end
