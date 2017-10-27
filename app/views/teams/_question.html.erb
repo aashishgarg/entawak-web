@@ -6,7 +6,7 @@
   </tr>
 </table>
 <div class="score_clan">
-  <%= render partial: 'questions/lock_status' %>
+  <%= render partial: 'questions/lock_status', locals: {team: team} %>
   <%= form_for(question, url: submit_question_path(question), method: 'post', class: 'mt-4') do |f| %>
 
       <% case question.category %>
