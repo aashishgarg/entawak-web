@@ -1,7 +1,6 @@
 <table width="100%" class="mt-4">
-  <tr><%= (question.id == team.questions.second.id) ? 'active' : '' %>
-    <td align="right" valign="bottom" class="
-      <% (question.id == team.questions.first.id) ? 'active' : '' %>"><%= image_tag lock_image(team.questions.first), class: 'lock_img' %>
+  <tr>
+    <td align="right" valign="bottom" class="<%= (question.id == team.questions.first.id) ? 'active' : '' %>"><%= image_tag lock_image(team.questions.first), class: 'lock_img' %>
       4
     </td>
     <td class="<%= (question.id == team.questions.second.id) ? 'active' : '' %>"><%= image_tag lock_image(team.questions.second), class: "lock_img" %>
