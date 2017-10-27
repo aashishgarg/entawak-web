@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
     team = @question.questionaire.team
     if params[:question][:answer] == @question.answer && @question.update(answered: true)
       ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
+      ActionCable.server.broadcast "game_#{team.game.id}", {'score' => team.game}
     end
     redirect_to question_team_path(team)
   end
