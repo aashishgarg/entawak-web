@@ -1,10 +1,15 @@
 <table width="100%" class="mt-4">
-  <tr>
-    <td align="right" valign="bottom" class="active"><%= image_tag lock_image(team.questions.first), class: 'lock_img' %>
+  <tr><%= (question.id == team.questions.second.id) ? 'active' : '' %>
+    <td align="right" valign="bottom" class="
+      <% (question.id == team.questions.first.id) ? 'active' : '' %>"><%= image_tag lock_image(team.questions.first), class: 'lock_img' %>
       4
     </td>
-    <td><%= image_tag lock_image(team.questions.first), class: 'lock_img' %> W</td>
-    <td><%= image_tag lock_image(team.questions.first), class: 'lock_img' %><%= image_tag 'direction_img.png' %></td>
-    <td><%= image_tag lock_image(team.questions.first), class: 'lock_img' %> 3</td>
+    <td class="<%= (question.id == team.questions.second.id) ? 'active' : '' %>"><%= image_tag lock_image(team.questions.second), class: "lock_img" %>
+      W
+    </td>
+    <td class="<%= (question.id == team.questions.third.id) ? 'active' : '' %>"><%= image_tag lock_image(team.questions.third), class: 'lock_img' %><%= image_tag 'direction_img.png' %></td>
+    <td class="<%= (question.id == team.questions.fourth.id) ? 'active' : '' %>">><%= image_tag lock_image(team.questions.fourth), class: 'lock_img' %>
+      3
+    </td>
   </tr>
 </table>

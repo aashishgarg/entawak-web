@@ -4,17 +4,18 @@
   <div class="form-group">
     <%= f.text_field :answer, class: 'form-control show_ans_box answer' %>
   </div>
-</div>
 
-<div class="form-group">
-  <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 1} %>
-</div>
 
-<div class="form-group">
-  <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 2} %>
+  <div class="form-group">
+    <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 1} %>
+  </div>
 
-</div>
+  <div class="form-group">
+    <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 2} %>
 
-<div class="form-group">
-  <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 3} %>
+  </div>
+
+  <div class="form-group">
+    <%= select_tag 'status', options_for_select(options_for_number_question), class: 'form-control select_option', data: {index: 3} %>
+  </div>
 </div>

@@ -6,9 +6,9 @@ module StudentsHelper
     options
   end
 
-  def options_for_word_question
-    options =[]
-    ("a".."z").each {|option| options<< [option, option]}
+  def options_for_word_question(question)
+    select_options = []
+    question&.options.each {|option| select_options << [option, option]}
   end
 
   def options_for_direction_questions

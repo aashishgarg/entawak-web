@@ -1,13 +1,11 @@
 <div class="form-group">
   <label class="form_heading"><%= question.statement %></label>
+
   <div class="form-group">
-    <input type="text" value="7" class="form-control show_ans_box answer" readonly>
+    <%= f.text_field :answer, class: 'form-control show_ans_box answer' %>
   </div>
 
-  <select class="form-control">
-    <option class="select_option">7</option>
-    <option class="select_option">1</option>
-    <option class="select_option">2</option>
-    <option class="select_option">3</option>
-  </select>
+  <div class="form-group">
+    <%= select_tag 'status', options_for_select(options_for_word_question(question)), class: 'form-control select_option', data: {index: 1} %>
+  </div>
 </div>
