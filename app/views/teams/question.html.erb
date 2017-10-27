@@ -3,6 +3,7 @@
 <script>
     populate_answer();
     startGame('<%= @team.id%>');
+    gameState('<%= @team&.game.id%>');
 
     $('.main_container').find('.confirm_scream').on('click', function () {
         $.ajax({

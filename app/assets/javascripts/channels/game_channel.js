@@ -1,11 +1,10 @@
 function studentNotify(gameId) {
-    App.gameChannel = App.cable.subscriptions.create({
+    App.game = App.cable.subscriptions.create({
         channel: "GameChannel",
         game: gameId
     }, {
         received: function (data) {
             if (data['game']) {
-                console.log('inside notify student');
                 $.ajax({
                     type: "GET",
                     dataType: "script",
@@ -13,8 +12,21 @@ function studentNotify(gameId) {
                     success: function (data) {
                     }
                 });
-            } else{
+            } else {
 
+            }
+        }
+    });
+}
+
+function gameState(gameId) {
+    App.game = App.cable.subscriptions.create({
+        channel: "GameChannel",
+        game: gameId
+    }, {
+        received: function (data) {
+            if (data['pause']) {
+                location.href = '/games/' + data['pause'].id + '/pause'
             }
         }
     });

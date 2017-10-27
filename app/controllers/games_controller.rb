@@ -4,7 +4,8 @@ class GamesController < ApplicationController
   layout 'game_layout', except: [:introduction]
 
   ########## Filters ########################
-  before_action :fetch_game, except: [:new, :create]
+  before_action :fetch_game, except: [:new, :create, :pause, :play]
+  skip_before_action :authenticate_teacher!, only: [:pause, :play]
 
   def introduction
   end
@@ -47,11 +48,16 @@ class GamesController < ApplicationController
 
   def switch
     if @game.state
-      @game.update(state: false)
+      ActionCable.server.broadcast "game_#{@game.id}", {'pause' => @game} if @game.update(state: false)
     else
-      @game.update(state: true)
+      ActionCable.server.broadcast "game_#{@game.id}", {'play' => @game} if @game.update(state: true)
     end
   end
+
+  def pause
+    @game = Game.find_by(id: params[:id])
+  end
+
 
   private
 

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :start
       get :change_audio
       get :switch
+      get :pause
     end
   end
 
