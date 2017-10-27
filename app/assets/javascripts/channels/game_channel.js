@@ -4,26 +4,19 @@ function studentNotify(gameId) {
         game: gameId
     }, {
         received: function (data) {
-            console.log('inside notify student');
-            console.log(data.id);
-            $.ajax({
-                type: "GET",
-                dataType: "script",
-                url: '/games/' + data.id + '/active_students',
-                success: function (data) {
-                }
-            });
+            if (data['game']) {
+                console.log('inside notify student');
+                $.ajax({
+                    type: "GET",
+                    dataType: "script",
+                    url: '/games/' + data['game'].id + '/active_students',
+                    success: function (data) {
+                    }
+                });
+            } else{
+
+            }
         }
     });
 }
 
-function startGame(gameID) {
-    App.gameChannel = App.cable.subscriptions.create({
-        channel: "GameChannel",
-        game: gameID
-    }, {
-        received: function (data) {
-            console.log('inside startGame ');
-        }
-    });
-}

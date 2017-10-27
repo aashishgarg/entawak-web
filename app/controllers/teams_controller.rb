@@ -2,11 +2,11 @@ class TeamsController < ApplicationController
 
   ########## Filters ########################
   skip_before_action :authenticate_teacher!, except: [:assign]
-  before_action :fetch_team, only: [:show]
+  before_action :fetch_team, only: [:show, :question]
 
   ########## Layouts ########################
   layout 'game_layout', only: [:assign]
-  layout 'students', only: [:show]
+  layout 'students', only: [:show, :question]
 
   def assign
     @game = current_teacher.games.find_by(id: params[:game_id])
@@ -19,6 +19,10 @@ class TeamsController < ApplicationController
   end
 
   def show
+  end
+
+  def question
+    @question = @team.questions.where(answered: false).take
   end
 
   private

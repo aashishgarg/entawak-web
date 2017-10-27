@@ -6,6 +6,7 @@ class Student < ApplicationRecord
 
   #============== Validations ==================
   validates :game, presence: true
+  validates :name, presence: true
 
   #============== Callbacks ====================
   after_create_commit :notify_teacher
@@ -13,12 +14,7 @@ class Student < ApplicationRecord
   private
 
   def notify_teacher
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-    puts "-------------------------update"
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-
-
-    ActionCable.server.broadcast "game_#{game.id}", self.game
+    ActionCable.server.broadcast "game_#{game.id}", {'game' => self.game}
   end
 
 end

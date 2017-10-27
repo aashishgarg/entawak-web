@@ -1,17 +1,27 @@
 class QuestionsController < ApplicationController
 
   ########## Layouts ########################
-  layout 'game_layout', except: [:introduction]
+  layout 'students'
+
+  ########## Filters ########################
   skip_before_action :authenticate_teacher!
+  before_action :set_question
 
   def show
-    @question = Question.where(id: params[:id]).take
+    @team = @question.questionaire.team
   end
 
   def submit
-  question = Question.where(id: params[:id]).take
-    if params[:question][:answer]== question.answer
-      question.move_to_next_question
+    team = @question.questionaire.team
+    if params[:question][:answer] == @question.answer && @question.update(answered: true)
+      ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
     end
+    redirect_to question_team_path(team)
+  end
+
+  private
+
+  def set_question
+    @question = Question.where(id: params[:id]).take
   end
 end

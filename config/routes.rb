@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   end
 
   resources :teams, only: [:show] do
+    member do
+      get :question
+    end
     collection do
       get :assign
     end

@@ -1,9 +1,11 @@
 function populate_answer() {
-    $('.select_option').on('change', function () {
+    $('.main_container').find('.answer').val('');
+    $('.main_container').on('change','.select_option', function () {
         var answer = [];
-        $.each($('.select_option'), function (index, element) {
-            answer[parseInt($(element).data('index'))] = $(element).val();
+        $.each($('.main_container').find('.select_option'), function (index, element) {
+            console.log($(element).data('index'));
+            answer[parseInt($(element).data('index')) || index] = $(element).val();
         });
-        $('.answer').val(answer.join(''));
+        $('.main_container').find('.answer').val(answer.join(''));
     });
 }

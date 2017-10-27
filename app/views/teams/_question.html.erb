@@ -1,0 +1,33 @@
+<table class="header">
+  <tr>
+    <td align="left"><strong><%= question&.questionaire&.team&.name %></strong></td>
+    <td align="center">21:15</td>
+    <td align="right">Hints:3</td>
+  </tr>
+</table>
+<div class="score_clan">
+  <%= render partial: 'questions/lock_status' %>
+  <%= form_for(question, url: submit_question_path(question), method: 'post', class: 'mt-4') do |f| %>
+
+      <% case question.category %>
+  <% when '3 Number' %>
+          <%= render partial: 'teams/questions_one', locals: {question: question, f: f} %>
+      <% when '4 Number' %>
+          <%= render partial: 'teams/questions_two', locals: {question: question, f: f} %>
+      <% when 'Word' %>
+          <%= render partial: 'teams/questions_three', locals: {question: question, f: f} %>
+      <% when 'Directional' %>
+          <%= render partial: 'teams/questions_four', locals: {question: question, f: f} %>
+      <% end %>
+
+      <div class="text-center">
+        <%= f.submit 'Submit', class: 'btn primery-gradient-l-r student_button' %>
+      </div>
+
+      <div class="Scream">
+        <a href="#" data-toggle="modal" data-target="#ScreamModal">Scream</a>
+      </div>
+
+      <%= render partial: 'teams/scream' %>
+  <% end %>
+</div>
