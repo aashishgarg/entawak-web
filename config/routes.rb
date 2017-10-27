@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   resources :teams, only: [:show] do
     member do
       get :question
+      get :scream
     end
     collection do
       get :assign

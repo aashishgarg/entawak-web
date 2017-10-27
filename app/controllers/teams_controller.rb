@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
 
   ########## Filters ########################
   skip_before_action :authenticate_teacher!, except: [:assign]
-  before_action :fetch_team, only: [:show, :question]
+  before_action :fetch_team, only: [:show, :question, :scream]
 
   ########## Layouts ########################
   layout 'game_layout', only: [:assign]
@@ -23,6 +23,12 @@ class TeamsController < ApplicationController
 
   def question
     @question = @team.questions.where(answered: false).take
+  end
+
+  def scream
+    if @team.hint_counter > 0 && @team.update(hint_counter: @team.hint_counter-1)
+      ActionCable.server.broadcast "team_#{@team.id}", {'team_scream' => @team}
+    end
   end
 
   private

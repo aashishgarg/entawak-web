@@ -1,5 +1,20 @@
-<%= render(partial: 'teams/question', locals: {question: @question}) %>
+<%= render(partial: 'teams/question', locals: {question: @question, team: @team}) %>
+<div class="hint"></div>
 <script>
     populate_answer();
     startGame('<%= @team.id%>');
+
+    $('.main_container').find('.confirm_scream').on('click', function () {
+        $.ajax({
+            type: "GET",
+            dataType: "script",
+            url: '/teams/' + '<%= @team.id%>' + '/scream',
+            success: function (data) {
+                $('.hint').html('<footer class="hint_show">\n' +
+                    '        <strong>Hint:</strong> <%= @question.hint%>\n' +
+                    '\n' +
+                    '  </footer>')
+            }
+        });
+    })
 </script>
