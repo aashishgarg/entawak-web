@@ -5,30 +5,8 @@
       <span id="ms_timer"></span>
     </div>
 
-    <div class="col-sm-6">
-      <div class="music_box row p-1">
-        <div class="col-6 text-left p-0"><%= @audio&.audio_file_name %></div>
-        <div class="w-100 text-center mt-3">
-
-        <span class=""><%= link_to change_audio_game_path do %>
-              <%= image_tag 'backward.png' %>
-              <% end %>
-        </span>
-
-          <span> <audio id='audio'>
-            <source src="<%= @audio&.audio&.url %>">
-          </audio>
-
-          <div class='btn-group btn-group-xs'>
-            <a href='javascript:void(0)' class="btn btn-default play_pause" data-toggle="tooltip" title="Preview"><i id="stateicon" class="fa fa-play-circle"></i></a>
-          </div>
-           </span>
-
-          <span class=""><%= link_to change_audio_game_path do %>
-              <%= image_tag 'forward.png' %></span>
-              <% end %>
-            </div>
-      </div>
+    <div class="col-sm-6 change_audio">
+      <%= render partial: 'games/audio', locals: {audio: @audio} %>
     </div>
   </div>
   <div class="row">
@@ -70,23 +48,6 @@
             }
         });
     });
-
-    $('.play_pause').on('click', function () {
-        aud_play_pause()
-    });
-
-    function aud_play_pause() {
-        var myAudio = document.getElementById('audio');
-        if (myAudio.paused) {
-            $('#stateicon').removeClass('fa fa-play-circle');
-            $('#stateicon').addClass('fa fa-pause-circle');
-            myAudio.play();
-        } else {
-            $('#stateicon').removeClass('fa fa-pause-circle');
-            $('#stateicon').addClass('fa fa-play-circle');
-            myAudio.pause();
-        }
-    }
-
     $("#ms_timer").countdowntimer({minutes: 30, size: 'lg', pauseButton: "pause"});
+    studentNotify('<%= @game.id%>')
 </script>

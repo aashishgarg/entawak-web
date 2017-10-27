@@ -35,7 +35,7 @@ class GamesController < ApplicationController
   end
 
   def start
-    # @audio = Audio.all.sample(1).first
+    @audio = Audio.all.sample(1).first
     @game.teams.each do |team|
       ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
     end
@@ -43,7 +43,6 @@ class GamesController < ApplicationController
 
   def change_audio
     @audio= Audio.all.sample(1).first
-    render 'start'
   end
 
   def switch

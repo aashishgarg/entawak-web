@@ -1,0 +1,26 @@
+<div class="music_box row p-1">
+  <div class="col-6 text-left p-0"><%= audio&.audio_file_name %></div>
+  <div class="w-100 text-center mt-3">
+
+        <span class=""><%= link_to change_audio_game_path, remote: true do %>
+              <%= image_tag 'backward.png' %>
+              <% end %>
+        </span>
+
+    <span> <audio id='audio'>
+            <source src="<%= audio&.audio&.url %>">
+          </audio>
+
+          <div class='btn-group btn-group-xs'>
+            <a href='javascript:void(0)' class="btn btn-default play_pause" data-toggle="tooltip" title="Preview"><i id="stateicon" class="fa fa-play-circle"></i></a>
+          </div>
+           </span>
+
+    <span class=""><%= link_to change_audio_game_path, remote: true do %>
+              <%= image_tag 'forward.png' %></span>
+              <% end %>
+      </div>
+</div>
+<script>
+  play_pause_audio()
+</script>
