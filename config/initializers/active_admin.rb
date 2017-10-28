@@ -56,6 +56,10 @@ ActiveAdmin.setup do |config|
   # within the application controller.
   config.authentication_method = :authenticate_admin_user!
 
+  config.skip_before_action :current_teacher
+  config.skip_before_action :current_student
+
+
   # == User Authorization
   #
   # Active Admin will automatically call an authorization
