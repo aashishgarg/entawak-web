@@ -100,7 +100,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     command %[mkdir tmp]
-    command %[ln -s "#{deploy_to}/shared/pids" tmp/.]
+    command %[ln -s "#{fetch(:deploy_to)}/shared/pids" tmp/.]
   end
   on :launch do
   end
@@ -118,7 +118,7 @@ desc 'Restart passenger server'
 task :restart => :environment do
   invoke :set_sudo_password
   invoke :'crontab:install'
-  queue! %[ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9]
+  command %[ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9]
 
   command %[sudo -A service nginx restart]
   comment "----------------------------- Start Passenger"
