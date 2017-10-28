@@ -20,7 +20,7 @@ set :sheet_name, 'Product deployment status'
 set :work_sheet_name, 'entawak-web'
 
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/cable.yml', 'config/sidekiq.yml')
-set :shared_dirs, fetch(:shared_dirs, []).push('public/system')
+set :shared_dirs, fetch(:shared_dirs, []).push('public/system', 'tmp/pids')
 
 set :ruby_version, "#{File.readlines(File.join(__dir__, '..', '.ruby-version')).first.strip}"
 set :gemset, "#{File.readlines(File.join(__dir__, '..', '.ruby-gemset')).first.strip}"
@@ -99,7 +99,7 @@ task :deploy => :environment do
     invoke :'mysql:create_database'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    command %[ln -s "#{fetch(:deploy_to)}/shared/pids" tmp/.]
+    # command %[ln -s "#{fetch(:deploy_to)}/shared/pids" tmp/.]
   end
   on :launch do
   end
@@ -123,6 +123,7 @@ task :restart => :environment do
   comment "----------------------------- Start Passenger"
   command %[mkdir -p #{File.join(fetch(:current_path), 'tmp')}]
   command %[touch #{File.join(fetch(:current_path), 'tmp', 'restart.txt')}]
-  command %[RAILS_ENV= #{fetch(:rails_env)} bundle exec sidekiq  -C config/sidekiq.yml -L log/sidekiq.log -d]
-  # invoke :'product_deployment_sheet:update'
+  invoke :'rvm:use', "#{fetch(:ruby_version)}@#{fetch(:gemset)}"
+  command %[RAILS_ENV=#{fetch(:rails_env)} bundle exec sidekiq  -C config/sidekiq.yml -L log/sidekiq.log -d]
+  invoke :'product_deployment_sheet:update'
 end
