@@ -28,7 +28,6 @@ Rails.application.routes.draw do
       get :help
       post :help
       get :dashboard
-      get :game_over
     end
   end
 
@@ -49,6 +48,7 @@ Rails.application.routes.draw do
     member do
       get :question
       get :scream
+      get :game_over
     end
     collection do
       get :assign
