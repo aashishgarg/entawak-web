@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  devise_scope :teacher do
-    root to: "teachers/sessions#new"
-  end
+  root to: 'games#dashboard'
 
   devise_for :teachers, controllers: {
       registrations: 'teachers/registrations',
@@ -24,6 +22,10 @@ Rails.application.routes.draw do
       get :change_audio
       get :switch
       get :pause
+    end
+    collection do
+      get :help
+      post :help
     end
   end
 

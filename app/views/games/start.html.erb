@@ -48,6 +48,6 @@
             }
         });
     });
-    $("#ms_timer").countdowntimer({minutes: <%= @game.duration %>, size: 'lg', pauseButton: "pause"});
+    $("#ms_timer").countdowntimer({minutes: <%= @game.duration %>, seconds: 00, size: 'lg', pauseButton: "pause"});
     studentNotify('<%= @game.id%>')
 </script>

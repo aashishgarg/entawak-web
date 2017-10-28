@@ -1,11 +1,11 @@
 class GamesController < ApplicationController
 
   ########## Layouts ########################
-  layout 'game_layout', except: [:introduction]
+  layout 'game_layout', except: [:introduction, :dashboard, :help]
 
   ########## Filters ########################
-  before_action :fetch_game, except: [:new, :create, :pause]
-  skip_before_action :authenticate_teacher!, only: [:pause]
+  before_action :fetch_game, except: [:new, :create, :pause, :dashboard, :help]
+  skip_before_action :authenticate_teacher!, only: [:pause, :dashboard, :help]
   skip_before_action :current_student, except: [:pause]
 
   def introduction
@@ -67,6 +67,11 @@ class GamesController < ApplicationController
     render layout: 'students'
   end
 
+  def dashboard
+  end
+
+  def help
+  end
 
   private
 
