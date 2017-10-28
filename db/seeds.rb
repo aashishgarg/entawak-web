@@ -70,14 +70,14 @@ Team::CLAN_NAMES.each do |clan|
 end
 
 #---------------------------- Create Audios -----------------------------------
-audio =['/audio_files/1 Set To Coast.mp3', '/audio_files/2 Get Ready To Move.mp3',
-        '/audio_files/3 I Can Love You.mp3',
-        '/audio_files/4 Heartbreak.mp3', '/audio_files/5 I Will Never Mistreat Y ou.mp3',
-        '/audio_files/6 Listen With Your Ears.mp3', '/audio_files/7 Monkey Time.mp3',
-        '/audio_files/8 US Love is the Best.mp3',
-        '/audio_files/9 You_re Beautiful.mp3']
+audio =['/audio_files/1.mp3', '/audio_files/2.mp3',
+        '/audio_files/3.mp3',
+        '/audio_files/4.mp3', '/audio_files/5.mp3',
+        '/audio_files/6.mp3', '/audio_files/7.mp3',
+        '/audio_files/8.mp3',
+        '/audio_files/9.mp3']
 audio.each do |audio|
-  Audio.create(audio: File.open(File.join(Rails.root, audio)))
+  Audio.create!(audio: File.open(File.join(Rails.root, audio)))
 end
 
 
