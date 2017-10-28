@@ -34,11 +34,9 @@ class Game < ApplicationRecord
 
   def time_left
     if end_at && (end_at > Time.now)
-      minutes = ((end_at - Time.now)/1.minutes).to_i
-      seconds = (end_at - Time.now).modulo(60)
-      {minutes: minutes, seconds: seconds.round}
+      (end_at - Time.now).round
     else
-      {minutes: 0, seconds: 1}
+      0
     end
   end
 

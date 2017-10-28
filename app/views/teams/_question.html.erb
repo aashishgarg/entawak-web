@@ -3,8 +3,8 @@
     <td align="left"><strong><%= team&.name.titleize %></strong></td>
     <td align="center">
       <% if team.game.state %>
-          <div class='timer' data-minutes-left='<%= team.game.time_left[:minutes] %>' data-seconds-left="<%= team.game.time_left[:seconds] %>">
-          </div>
+          <span class='timer' data-seconds-left="<%= team.game.time_left %>">
+          </span>
       <% end %></td>
     <td align="right">Hint: <span class="team_hint_<%= team.id %>"><%= team.hint_counter %></span></td>
   </tr>

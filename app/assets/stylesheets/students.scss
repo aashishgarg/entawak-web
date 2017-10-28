@@ -1,5 +1,5 @@
 
-body{
+body {
   font-family: gotham-regular;
 }
 
@@ -7,8 +7,6 @@ body{
   font-family: gotham-regular;
   src: url('gotham-regular.ttf') format('truetype');
 }
-
-
 
 @font-face {
   font-family: gotham-bold;
@@ -19,6 +17,7 @@ html {
   position: relative;
   height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   background: #eee;
@@ -318,4 +317,12 @@ img {
 
 .yellow_text {
   color: #DDAA3F
+}
+
+.jst-hours {
+  display: none;
+}
+
+.timer {
+  display: inline-flex;
 }

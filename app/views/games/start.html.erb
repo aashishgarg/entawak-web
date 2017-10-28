@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-6 time_start ml-auto">
       <% if @game.state %>
-          <div class='timer' data-minutes-left='<%= @game.time_left[:minutes] %>' data-seconds-left="<%= @game.time_left[:seconds] %>">
+          <div class='timer' data-seconds-left="<%= @game.time_left %>">
           </div>
       <% end %>
     </div>
