@@ -99,8 +99,8 @@ task :deploy => :environment do
     invoke :'mysql:create_database'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    queue! %[mkdir tmp]
-    queue! %[ln -s "#{deploy_to}/shared/pids" tmp/.]
+    command %[mkdir tmp]
+    command %[ln -s "#{deploy_to}/shared/pids" tmp/.]
   end
   on :launch do
   end
@@ -124,6 +124,6 @@ task :restart => :environment do
   comment "----------------------------- Start Passenger"
   command %[mkdir -p #{File.join(fetch(:current_path), 'tmp')}]
   command %[touch #{File.join(fetch(:current_path), 'tmp', 'restart.txt')}]
-  queue! %[bundle exec sidekiq --environment #{rails_env} -C config/sidekiq.yml -L log/sidekiq.log -d]
+  command %[bundle exec sidekiq --environment #{rails_env} -C config/sidekiq.yml -L log/sidekiq.log -d]
   invoke :'product_deployment_sheet:update'
 end
