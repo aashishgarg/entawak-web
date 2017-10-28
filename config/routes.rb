@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   mount ActionCable.server => "/cable"
 
   get 'games/introduction'
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
-
 
   root to: 'games#dashboard'
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
       get :help
       post :help
       get :dashboard
+      get :game_over
     end
   end
 
@@ -47,7 +49,6 @@ Rails.application.routes.draw do
     member do
       get :question
       get :scream
-      get :game_over
     end
     collection do
       get :assign
