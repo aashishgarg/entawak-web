@@ -1,7 +1,11 @@
 <table class="header">
   <tr>
     <td align="left"><strong><%= team&.name.titleize %></strong></td>
-    <td align="center"><span id="ms_timer"></span></td>
+    <td align="center">
+      <% if team.game.state %>
+          <div class='timer' data-minutes-left='<%= team.game.time_left[:minutes] %>' data-seconds-left="<%= team.game.time_left[:seconds] %>">
+          </div>
+      <% end %></td>
     <td align="right">Hint: <span class="team_hint_<%= team.id %>"><%= team.hint_counter %></span></td>
   </tr>
 </table>
@@ -17,7 +21,7 @@
       <% when 'Word' %>
           <%= render partial: 'teams/questions_three', locals: {question: question, f: f} %>
       <% when 'Directional' %>
-          <%=  render partial: 'teams/questions_four', locals: {question: question, f: f} %>
+          <%= render partial: 'teams/questions_four', locals: {question: question, f: f} %>
       <% end %>
 
       <div class="text-center">
@@ -32,6 +36,8 @@
   <% end %>
 </div>
 <script>
-    $("#ms_timer").countdowntimer({minutes: <%= team.game.time_left %>, size: 'lg', pauseButton: "pause"});
+    if (<%= team.game.state %>) {
+        $('.timer').startTimer();
+    }
 </script>
 

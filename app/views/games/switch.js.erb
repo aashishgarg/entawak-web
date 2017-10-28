@@ -1,5 +1,1 @@
-if (<%= @game.state  %>) {
-    $('#resume_game').text('Pause Game');
-} else {
-    $('#resume_game').text('Resume');
-}
+$('#resume_game').text(<%= @game.state ? 'Pause Game': 'Resume' %>);

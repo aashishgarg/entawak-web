@@ -38,7 +38,7 @@ class GamesController < ApplicationController
   def start
     if @game.end_at.nil?
       duration = params[:duration] || Game::DURATION
-      @game.update(end_at: (Time.now + duration.to_i.minutes))
+      @game.update(end_at: (Time.now + duration.to_i.minutes), state: true)
       GameEventJob.set(wait_until: @game.end_at).perform_later(@game)
     end
     @audio = Audio.all.sample(1).first
@@ -52,10 +52,8 @@ class GamesController < ApplicationController
   end
 
   def switch
-    if @game.state
-      if @game.update(state: false, pause_at: Time.now)
-        ActionCable.server.broadcast "game_#{@game.id}", {'pause' => @game}
-      end
+    if @game.state && @game.update(state: false, pause_at: Time.now)
+      ActionCable.server.broadcast "game_#{@game.id}", {'pause' => @game}
     else
       end_at = @game.end_at + (Time.now - @game.pause_at)
       if @game.update(state: true, end_at: end_at)
