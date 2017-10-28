@@ -24,7 +24,10 @@ class TeamsController < ApplicationController
   def question
     if @team.game.state
       @question = @team.questions.where(answered: false).take
-      ActionCable.server.broadcast "student_#{current_student.id}", {game_over: current_student} unless @question
+      unless @question
+        ActionCable.server.broadcast "student_#{current_student.id}", {game_over: current_student}
+        redirect_to game_over_games_path(@team.game)
+      end
     else
       redirect_to pause_game_path(@team.game)
     end
