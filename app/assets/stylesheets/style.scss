@@ -592,8 +592,21 @@ h4.inner_heading strong {
     overflow: hidden;
 }
 
-.how_works_text {
+.rules_heading{
+  font-weight: bold;
+  text-decoration: underline;
+  color: #000;
+}
+
+.how_works_text{
     color: #606060;
+  padding-left: 15px;
+}
+
+.how_works_text li{
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 10px;
 }
 
 .time_start {
