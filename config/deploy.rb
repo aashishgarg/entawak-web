@@ -124,5 +124,5 @@ task :restart => :environment do
   command %[mkdir -p #{File.join(fetch(:current_path), 'tmp')}]
   command %[touch #{File.join(fetch(:current_path), 'tmp', 'restart.txt')}]
   command %[bundle exec sidekiq --environment #{fetch(:rails_env)} -C config/sidekiq.yml -L log/sidekiq.log -d]
-  invoke :'product_deployment_sheet:update'
+  # invoke :'product_deployment_sheet:update'
 end
