@@ -53,7 +53,8 @@ class GamesController < ApplicationController
         ActionCable.server.broadcast "game_#{@game.id}", {'pause' => @game}
       end
     else
-      if @game.update(state: true, end_at: @game.end_at + (@game.pause_at - @game.end_at))
+      end_at = @game.end_at + (Time.now - @game.pause_at)
+      if @game.update(state: true, end_at: end_at)
         @game.teams.each do |team|
           ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
         end
