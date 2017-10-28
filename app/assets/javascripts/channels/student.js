@@ -4,7 +4,11 @@ function teamNotify(studentID) {
         student: studentID
     }, {
         received: function (data) {
-            location.href = "/teams/" + data.team_id
+            if (data['student']) {
+                location.href = "/teams/" + data['student'].team_id
+            } else if (data['destroy']) {
+                location.href = '/students/welcome'
+            }
         }
     });
 }

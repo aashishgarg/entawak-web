@@ -29,7 +29,7 @@ class Game < ApplicationRecord
   end
 
   def broadcast_team
-    students.each {|student| ActionCable.server.broadcast "student_#{student.id}", student} if teams.present?
+    students.each {|student| ActionCable.server.broadcast "student_#{student.id}", {student: student}} if teams.present?
   end
 
   def duration
