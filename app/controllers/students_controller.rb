@@ -36,6 +36,10 @@ class StudentsController < ApplicationController
 
   end
 
+  def time_up
+    session[:student_id] = nil
+  end
+
   def destroy
     if @student.destroy
       session[:student_id] = nil

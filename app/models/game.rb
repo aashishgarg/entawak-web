@@ -32,8 +32,13 @@ class Game < ApplicationRecord
     students.each {|student| ActionCable.server.broadcast "student_#{student.id}", {student: student}} if teams.present?
   end
 
-  def duration
+  def time_left
     ((end_at - Time.now)/1.minutes).to_i
+  end
+
+  def completed
+    students.each {|student| ActionCable.server.broadcast "student_#{student.id}", {time_up: student}}
+    update(status: false)
   end
 
   private

@@ -15,6 +15,9 @@ function studentNotify(gameId) {
             } else if (data['score']) {
                 location.href = '/games/' + data['score'].id + '/start'
             }
+            else if (data['hint']) {
+                location.href = '/games/' + data['hint'].id + '/start'
+            }
         }
     });
 }

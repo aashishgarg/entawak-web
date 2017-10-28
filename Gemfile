@@ -71,3 +71,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pnotify-rails'
 gem 'unobtrusive_flash', '>=3'
+gem 'sidekiq'

@@ -1,0 +1,9 @@
+---
+:pidfile: ./tmp/pids/sidekiq.pid
+:concurrency: 10
+:queues:
+  - default
+  - mailers
+:url: redis://localhost:6379/0
+:daemon: true
+:size: 25

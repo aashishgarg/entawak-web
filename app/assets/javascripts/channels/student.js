@@ -9,6 +9,12 @@ function teamNotify(studentID) {
             } else if (data['destroy']) {
                 location.href = '/students/welcome'
             }
+            else if (data['time_up']) {
+                location.href = '/students/time_up'
+            }
+            else if (data['game_over']) {
+                location.href = '/teams/' + data['game_over'].team_id + '/game_over'
+            }
         }
     });
 }

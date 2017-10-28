@@ -1,0 +1,8 @@
+<div class="thums_up text-center">
+  <%= image_tag('thums_up.png') %>
+  <h4 class="mt-2">Great Work</h4>
+
+  <p>Escape Time<br>
+    <%= (@team.game.end_at- Time.now).strftime('%M:%S') %>
+  </p>
+</div>

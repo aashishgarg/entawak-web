@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   ########## Filters ########################
   before_action :fetch_game, except: [:new, :create, :pause, :dashboard, :help]
   skip_before_action :authenticate_teacher!, only: [:pause, :dashboard, :help]
-  skip_before_action :current_student, except: [:pause]
+  skip_before_action :current_student, except: [:pause, :game_over]
 
   def introduction
   end
@@ -36,8 +36,11 @@ class GamesController < ApplicationController
   end
 
   def start
-    duration = params[:duration] || Game::DURATION
-    @game.update(end_at: (Time.now + duration.to_i.minutes))
+    if @game.end_at.nil?
+      duration = params[:duration] || Game::DURATION
+      @game.update(end_at: (Time.now + duration.to_i.minutes))
+      GameEventJob.set(wait_until: @game.end_at).perform_later(@game)
+    end
     @audio = Audio.all.sample(1).first
     @game.teams.each do |team|
       ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
@@ -61,6 +64,7 @@ class GamesController < ApplicationController
         end
       end
     end
+    redirect_to start_game_path(@game)
   end
 
   def pause

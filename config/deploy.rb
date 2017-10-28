@@ -19,7 +19,7 @@ set :rvm_path, '/usr/local/rvm/scripts/rvm'
 set :sheet_name, 'Product deployment status'
 set :work_sheet_name, 'entawak-web'
 
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/cable.yml')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/cable.yml', 'config/sidekiq.yml')
 set :shared_dirs, fetch(:shared_dirs, []).push('public/system')
 
 set :ruby_version, "#{File.readlines(File.join(__dir__, '..', '.ruby-version')).first.strip}"
@@ -99,6 +99,8 @@ task :deploy => :environment do
     invoke :'mysql:create_database'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    queue! %[mkdir tmp]
+    queue! %[ln -s "#{deploy_to}/shared/pids" tmp/.]
   end
   on :launch do
   end
@@ -116,9 +118,12 @@ desc 'Restart passenger server'
 task :restart => :environment do
   invoke :set_sudo_password
   invoke :'crontab:install'
+  queue! %[ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9]
+
   command %[sudo -A service nginx restart]
   comment "----------------------------- Start Passenger"
   command %[mkdir -p #{File.join(fetch(:current_path), 'tmp')}]
   command %[touch #{File.join(fetch(:current_path), 'tmp', 'restart.txt')}]
+  queue! %[bundle exec sidekiq --environment #{rails_env} -C config/sidekiq.yml -L log/sidekiq.log -d]
   invoke :'product_deployment_sheet:update'
 end

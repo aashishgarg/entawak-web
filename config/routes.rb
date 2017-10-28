@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   mount ActionCable.server => "/cable"
 
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
     collection do
       get :welcome
       get :game
+      get :time_up
     end
   end
   resources :questions, only: [:show] do
@@ -46,6 +49,7 @@ Rails.application.routes.draw do
     member do
       get :question
       get :scream
+      get :game_over
     end
     collection do
       get :assign

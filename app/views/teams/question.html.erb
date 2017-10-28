@@ -4,7 +4,7 @@
     populate_answer();
     startGame('<%= @team.id%>');
     gameState('<%= @team&.game.id%>');
-
+    teamNotify('<%= current_student.id%>');
     $('.main_container').find('.confirm_scream').on('click', function () {
         $.ajax({
             type: "GET",
@@ -27,5 +27,4 @@
     });
 
     show_prepopulated_field()
-
 </script>

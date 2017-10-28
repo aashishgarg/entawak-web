@@ -12,7 +12,7 @@
   <div class="row">
     <% @game.teams.each do |team| %>
         <div class="col-sm-6 score_clan <%= team.name %>">
-          <h2><%= team.name.titleize %> <span>Hint:1</span></h2>
+          <h2><%= team.name.titleize %> <span>Hint:<%= team.hint_counter %></span></h2>
           <table width="100%">
             <tr>
               <td align="right" valign="bottom"><%= image_tag lock_image(team.questions.first), class: 'lock_img' %>4
@@ -30,7 +30,7 @@
   <!--/row-->
   <div class="text-right">
             <span class="outer_btn text-center primery-gradient-l-r">
-              <%= link_to 'javascript:void(0)', id: 'pause' do %>
+              <%= link_to switch_game_path(@game), id: 'pause' do %>
                 <%= game_state_button %>
               <% end %>
             </span>
@@ -38,16 +38,16 @@
 </div>
 
 <script>
-    $('#pause').on('click', function () {
-        $.ajax({
-            type: "GET",
-            dataType: "script",
-            url: "<%== switch_game_path(@game) %>",
-            success: function (data) {
-                console.log(data)
-            }
-        });
-    });
-    $("#ms_timer").countdowntimer({minutes: <%= @game.duration %>, seconds: 00, size: 'lg', pauseButton: "pause"});
+//    $('#pause').on('click', function () {
+//        $.ajax({
+//            type: "GET",
+//            dataType: "script",
+//            url: "<%#== switch_game_path(@game) %>",
+//            success: function (data) {
+//                console.log(data)
+//            }
+//        });
+//    });
+    $("#ms_timer").countdowntimer({minutes: <%= @game.time_left %>, size: 'lg', pauseButton: "pause"});
     studentNotify('<%= @game.id%>')
 </script>
