@@ -123,6 +123,6 @@ task :restart => :environment do
   comment "----------------------------- Start Passenger"
   command %[mkdir -p #{File.join(fetch(:current_path), 'tmp')}]
   command %[touch #{File.join(fetch(:current_path), 'tmp', 'restart.txt')}]
-  command %[bundle exec sidekiq --environment #{rails_env} -C config/sidekiq.yml -L log/sidekiq.log -d]
+  command %[bundle exec sidekiq --environment #{fetch(:rails_env)} -C config/sidekiq.yml -L log/sidekiq.log -d]
   invoke :'product_deployment_sheet:update'
 end
