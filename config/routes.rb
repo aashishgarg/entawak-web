@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     collection do
       get :help
       post :help
+      get :dashboard
     end
   end
 
