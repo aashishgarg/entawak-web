@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? and !AdminUser.present?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
 #============ Create Teacher and game ================================
 teacher = Teacher.create(name: 'Teacher', email: 'sample@headerlabs.com', password: 'Welcome@123', password_confirmation: 'Welcome@123')
