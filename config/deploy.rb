@@ -99,7 +99,6 @@ task :deploy => :environment do
     invoke :'mysql:create_database'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    command %[mkdir tmp]
     command %[ln -s "#{fetch(:deploy_to)}/shared/pids" tmp/.]
   end
   on :launch do
