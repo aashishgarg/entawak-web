@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
 
   ########## Filters ########################
   skip_before_action :authenticate_teacher!
+  skip_before_action :current_student, only: [:welcome, :new, :create, :destroy]
   before_action :set_game, only: [:new, :create]
   before_action :set_student, only: [:show, :destroy, :team]
 

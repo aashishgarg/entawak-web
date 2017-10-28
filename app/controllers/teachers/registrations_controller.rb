@@ -2,6 +2,7 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
 
   layout 'login_layout', only: [:new, :create]
   before_action :configure_sign_up_params, only: [:create]
+  skip_before_action :current_student
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up

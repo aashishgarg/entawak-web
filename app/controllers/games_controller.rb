@@ -4,8 +4,9 @@ class GamesController < ApplicationController
   layout 'game_layout', except: [:introduction]
 
   ########## Filters ########################
-  before_action :fetch_game, except: [:new, :create, :pause, :play]
-  skip_before_action :authenticate_teacher!, only: [:pause, :play]
+  before_action :fetch_game, except: [:new, :create, :pause]
+  skip_before_action :authenticate_teacher!, only: [:pause]
+  skip_before_action :current_student, except: [:pause]
 
   def introduction
   end
@@ -63,7 +64,6 @@ class GamesController < ApplicationController
   end
 
   def pause
-    @game = Game.find_by(id: params[:id])
     render layout: 'students'
   end
 
