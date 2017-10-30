@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get :help
       post :help
       get :dashboard
+      get :download_pdf
     end
   end
 
