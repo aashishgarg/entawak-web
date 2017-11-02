@@ -5,11 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') unless AdminUser.first
+
+#============ Create Game template    ================================
+GameTemplate::NAMES.each {|template| GameTemplate.create(name: template.titleize, subject: 'science', level: '12',
+                                                         avatar: File.open("#{Rails.root}/app/assets/images/game-image-3.jpg"))}
 
 #============ Create Teacher and game ================================
 teacher = Teacher.create(name: 'Teacher', email: 'sample@headerlabs.com', password: 'Welcome@123', password_confirmation: 'Welcome@123')
-game = teacher.games.create
+game = teacher.games.create(game_template: GameTemplate.first)
 
 35.times do |n|
   game.students.create(name: "name_#{n}")

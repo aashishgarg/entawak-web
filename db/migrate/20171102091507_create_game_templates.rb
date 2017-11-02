@@ -4,6 +4,7 @@ class CreateGameTemplates < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :subject
       t.string :level
+      t.attachment :avatar
 
       t.timestamps
     end
