@@ -40,6 +40,7 @@
   <div class="navbar-collapse collapse dual-nav">
     <ul class="nav navbar-nav ml-auto">
       <% if teacher_signed_in? %>
+          <li><%= link_to 'Download', download_pdf_games_path %></li>
           <li class="dropdown">
             <a href='javascript:void(0);' , class="dropdown-toggle user_pic_name" id="dropdownMenuButton" data-toggle="dropdown">
               <span class="user_pic"><%= image_tag 'user_pic.png' %></span>
