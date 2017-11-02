@@ -4,19 +4,20 @@ class GamesController < ApplicationController
   layout 'game_layout', except: [:introduction, :dashboard, :help]
 
   ########## Filters ########################
-  before_action :fetch_game, except: [:new, :create, :pause, :dashboard, :help,:download_pdf]
-  skip_before_action :authenticate_teacher!, only: [:pause, :dashboard, :help ,:download_pdf]
+  before_action :fetch_game, except: [:new, :create, :pause, :dashboard, :help, :download_pdf]
+  skip_before_action :authenticate_teacher!, only: [:pause, :dashboard, :help, :download_pdf]
   skip_before_action :current_student, except: [:pause, :game_over]
 
   def introduction
   end
 
   def new
-    @game = current_teacher.games.create
-  end
-
-  def create
-
+    @game = current_teacher.games.new(game_template: GameTemplate.find_by(id: params[:game_template]))
+    if @game.save
+      redirect_to game_path(@game)
+    else
+      redirect_to dashboard_games_path
+    end
   end
 
   def update
@@ -76,7 +77,7 @@ class GamesController < ApplicationController
   end
 
   def download_pdf
-    data = open("#{File.join(Rails.root, 'public','Escape Monster The Invasion Game PDF.pdf')}")
+    data = open("#{File.join(Rails.root, 'public', 'Escape Monster The Invasion Game PDF.pdf')}")
     send_data data.read, filename: "Escape Monster The Invasion Game PDF.pdf", type: "application/pdf", disposition: 'inline', stream: 'true', buffer_size: '4096'
   end
 

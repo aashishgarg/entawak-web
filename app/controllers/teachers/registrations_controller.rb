@@ -62,6 +62,6 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-    new_game_path
+    dashboard_games_path
   end
 end
