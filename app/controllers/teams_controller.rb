@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
     if @game.teams.present?
       @game.broadcast_team
     else
-      redirect_to active_students_game_path(@game), info: 'Minimum four students is required.'
+      redirect_to active_students_game_path(@game), info: 'Minimum four students are required.'
     end
   end
 

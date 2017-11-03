@@ -37,10 +37,16 @@
     var timeSpan = <%= Game::DURATION %>;
     var action = $('a.start_game').attr('href');
     $('a.time_changer').on('click', function () {
+
         if ($(this).data('type') == 'plus') {
-            timeSpan -= 1;
+            if (timeSpan > 0) {
+                timeSpan -= 1;
+            }
         } else {
-            timeSpan += 1;
+            if (timeSpan < 30) {
+                timeSpan += 1;
+            }
+
         }
         $('span.game_duration').html(timeSpan);
         $('a.start_game').attr('href', action + '?duration=' + timeSpan)
