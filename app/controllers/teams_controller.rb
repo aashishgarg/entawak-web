@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
 
   ########## Filters ########################
   skip_before_action :authenticate_teacher!, except: [:assign]
-  before_action :fetch_team, only: [:show, :question, :scream, :game_over]
+  skip_before_action :current_student, only: [:assign]
 
   ########## Layouts ########################
   layout 'game_layout', only: [:assign]
@@ -19,35 +19,32 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @team = current_student.team
   end
 
   def question
-    if @team.game.state
+    @team = current_student.team
+    if @team && @team.game.state
       @question = @team.questions.where(answered: false).take
       unless @question
         ActionCable.server.broadcast "student_#{current_student.id}", {game_over: current_student}
         redirect_to game_over_team_path(@team)
       end
     else
-      redirect_to pause_game_path(@team.game)
+      redirect_to pause_game_path(current_student.game)
     end
   end
 
   def scream
+    @team = current_student.team
     if @team.hint_counter > 0 && @team.update(hint_counter: @team.hint_counter-1)
       ActionCable.server.broadcast "team_#{@team.id}", {'team_scream' => @team}
-      ActionCable.server.broadcast "game_#{@team.game.id}", {'hint' => @team.game}
+      ActionCable.server.broadcast "game_#{@team.game.id}", {'hint' => @team}
     end
   end
 
   def game_over
 
-  end
-
-
-  private
-  def fetch_team
-    @team = Team.find_by(id: params[:id])
   end
 
 end

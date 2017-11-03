@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   ########## Filters ###############################
   before_action :authenticate_teacher!
   before_action :current_student
-  after_action :prepare_unobtrusive_flash
+  add_flash_types :success, :warning, :danger, :info
 
   helper_method :current_student
 

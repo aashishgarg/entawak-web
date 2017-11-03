@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :students do
+  resource :students do
     collection do
       get :welcome
       get :game
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :teams, only: [:show] do
+  resource :teams, only: [:show] do
     member do
       get :question
       get :scream

@@ -7,29 +7,29 @@ class StudentsController < ApplicationController
   skip_before_action :authenticate_teacher!
   skip_before_action :current_student, only: [:welcome, :new, :create, :destroy]
   before_action :set_game, only: [:new, :create]
-  before_action :set_student, only: [:show, :destroy, :team]
 
   def welcome
   end
 
   def new
     unless @game
-      redirect_to welcome_students_path, notice: 'Please enter valid secret knock'
+      redirect_to welcome_students_path, warning: 'Please enter valid secret knock'
     end
   end
 
   def create
-    @student = @game.students.build(name: params[:student][:name])
+    @student = @game&.students.build(name: params[:student][:name])
     if @student.save
+      reset_session
       session[:student_id] = @student.id
-      redirect_to student_path(@student), notice: "Welcome #{@student.name}"
+      redirect_to students_path, success: "Welcome #{@student.name}"
     else
-      redirect_to new_student_path
+      redirect_to new_students_path, warning: @student.errors.full_messages.to_sentence
     end
   end
 
   def show
-    cookies.signed[:game_id] = @student.game.id
+    cookies.signed[:game_id] = current_student.game.id
   end
 
   def team
@@ -37,25 +37,22 @@ class StudentsController < ApplicationController
   end
 
   def time_up
-    session[:student_id] = nil
+    reset_session
   end
 
   def destroy
     if @student.destroy
-      session[:student_id] = nil
+      reset_session
       ActionCable.server.broadcast "student_#{@student.id}", {destroy: @student.id}
-      redirect_to active_students_game_path(@student.game), notice: 'Deleted successfully'
+      redirect_to active_students_game_path(@student.game), success: 'Deleted successfully'
     end
   end
 
   private
 
   def set_game
-    @game = Game.where(secret_knock: params[:student][:secret_knock]).take
+    @game = Game.where(secret_knock: params.dig(:student, :secret_knock)).take
   end
 
-  def set_student
-    @student = Student.find_by(id: params[:id])
-  end
 
 end

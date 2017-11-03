@@ -4,8 +4,8 @@ function teamNotify(studentID) {
         student: studentID
     }, {
         received: function (data) {
-            if (data['student']) {
-                location.href = "/teams/" + data['student'].team_id
+            if (data['team']) {
+                location.href = "/teams"
             } else if (data['destroy']) {
                 location.href = '/students/welcome'
             }
@@ -13,7 +13,7 @@ function teamNotify(studentID) {
                 location.href = '/students/time_up'
             }
             else if (data['game_over']) {
-                location.href = '/teams/' + data['game_over'].team_id + '/game_over'
+                location.href = '/teams/game_over'
             }
         }
     });

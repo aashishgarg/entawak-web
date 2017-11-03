@@ -16,7 +16,7 @@ function studentNotify(gameId) {
                 location.href = '/games/' + data['score'].id + '/start'
             }
             else if (data['hint']) {
-                location.href = '/games/' + data['hint'].id + '/start'
+                $('.teams_container').find("." + data['hint'].name + "_team_hint").html('Hint:' + data['hint'].hint_counter)
             }
         }
     });

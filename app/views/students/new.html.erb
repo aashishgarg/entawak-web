@@ -1,9 +1,18 @@
 <div class="mt-5 mb-5 text-center"><%= image_tag 'escape_monster.png' %></div>
 
 <div class="enter_name_code">
-  <%= form_with model: @game.students.build, local: true do |f| %>
+  <%= form_with model: @game.students.build, local: true, id: 'student_name' do |f| %>
       <%= f.text_field :name, placeholder: 'Name', class: 'student_name', maxlength: '50', required: true %>
       <%= f.hidden_field :secret_knock, value: @game.secret_knock, placeholder: 'Name', class: 'student_name' %>
       <%= f.submit 'Enter', class: 'btn primery-gradient-l-r student_button' %>
   <% end %>
 </div>
+
+<script>
+    $('form#student_name').on('submit', function () {
+        if ($('input.student_name').val().trim() == '') {
+            alert('Please enter a valid name!');
+            return false;
+        }
+    })
+</script>

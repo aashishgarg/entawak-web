@@ -2,7 +2,7 @@
 <div class="row calns_row">
   <div class="col-sm-12">
     <% if team.present? %>
-        <ul class="list-group clans blue">
+        <ul class="list-group clans <%= team.name %>">
           <li class="list-group-item clan_heading"><%= team.name&.titleize %> Clan</li>
           <% team.students.each do |student| %>
               <li class="list-group-item"><%= student.name&.titleize %></li>

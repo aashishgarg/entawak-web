@@ -3,6 +3,6 @@
   <h4 class="mt-2">Great Work</h4>
 
   <p>Escape Time<br>
-    <%= Time.at(@team&.game&.end_at - Time.now)&.strftime('%M:%S') %>
+    <%= Time.at(current_student.game&.end_at - Time.now)&.strftime('%M:%S') %>
   </p>
 </div>

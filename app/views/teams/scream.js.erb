@@ -1,2 +1,5 @@
-$('.main_container').find('.hint').html('<%= %>'
-)
+if (<%= @team.hint_counter >= 1 %>) {
+    $('.main_container').find('.hint').html('<%= %>');
+} else {
+    alert('Hints are already used');
+}

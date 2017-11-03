@@ -8,14 +8,13 @@ class QuestionsController < ApplicationController
   before_action :set_question
 
   def show
-    @team = @question.questionaire.team
+    @team = current_student.team
   end
 
   def submit
-    team = @question.questionaire.team
     if params[:question][:answer] == @question.answer && @question.update(answered: true)
-      ActionCable.server.broadcast "team_#{team.id}", {'team' => team}
-      ActionCable.server.broadcast "game_#{team.game.id}", {'score' => team.game}
+      ActionCable.server.broadcast "team_#{current_student.team.id}", {'team' => current_student.team}
+      ActionCable.server.broadcast "game_#{current_student.game.id}", {'score' => current_student.game}
     end
     redirect_to question_team_path(team)
   end
