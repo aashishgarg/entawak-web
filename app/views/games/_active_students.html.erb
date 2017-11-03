@@ -1,7 +1,7 @@
 <% students.each do |student| %>
     <div class="col-4">
       <div class="col-12 text-truncate"><%= student.name %>
-        <%= link_to students_path(student), method: :delete, data: {confirm: 'Are you sure?'} do %>
+        <%= link_to students_path({student: student.id}), method: :delete, data: {confirm: 'Are you sure?'} do %>
             <i class="fa fa-times" aria-hidden="true"></i>
         <% end %>
       </div>

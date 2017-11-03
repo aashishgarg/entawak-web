@@ -41,8 +41,9 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    @student = Student.find_by(id: params[:student])
     if @student.destroy
-      reset_session
+      session[:student_id] = nil
       ActionCable.server.broadcast "student_#{@student.id}", {destroy: @student.id}
       redirect_to active_students_game_path(@student.game), success: 'Deleted successfully'
     end
