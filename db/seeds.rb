@@ -29,7 +29,7 @@ Team::CLAN_NAMES.each do |clan|
       # Red
       when 'red'
         questionaire.questions.create(statement: "What's Mappening?", description: 'Match letters to question numbers. Translate "FACE" to numbers.', answer: '8369', hint: 'What numbers spell face?', category: '4 Number')
-        questionaire.questions.create(statement: 'Africa in Pieces', description: 'Which countries have the given independence days. Letters spell the answer. Uganda (W), Egypt (O), Chad (R), Botswana (L), Morocco (D)', answer: 'WORLD', hint: 'Hint: Which countries have these independence dates?', category: 'Word', options: ['WORLD', 'EGYPT', 'UGANDA', 'OZARK'])
+        questionaire.questions.create(statement: 'Africa in Pieces', description: 'Which countries have the given independence days. Letters spell the answer. Uganda (W), Egypt (O), Chad (R), Botswana (L), Morocco (D)', answer: 'WORLD', hint: 'Which countries have these independence dates?', category: 'Word', options: ['WORLD', 'EGYPT', 'UGANDA', 'OZARK'])
         questionaire.questions.create(statement: 'Driftin Away', description: 'Answer questions and circle each of these letters L=left, R=right, U=up,D=down. continents, pangaea, continentaL DRift, afRica, aRctic, Rock', answer: 'LDRRRR', hint: 'R=right, U=up, L=left, D=down. Which of these are found in the answers?', category: 'Directional')
         questionaire.questions.create(statement: 'Divided they Fall', description: '"Three are better than none, some are greater than one" Question numbers of answers greater than one are solution. 1, 6, 8', answer: '168', hint: 'Which number questions have an answer greater than 1?', category: '3 Number')
 
@@ -37,9 +37,8 @@ Team::CLAN_NAMES.each do |clan|
       when 'green'
         questionaire.questions.create(statement: 'Speech Teach', description: 'Put Gettysburg Address in order.Numbers spell code.', answer: '2724', hint: 'Google the first line to find which speech.Put in order to find number code.', category: '4 Number')
         questionaire.questions.create(statement: 'Fishing', description: 'Answer questions to get five letters.', answer: 'TITLE', hint: "Fishing doesn't impress anyone.", category: 'Word', options: ['TITLE', 'SAMPLE', 'TIRED', 'WORLD'])
-        questionaire.questions.create(statement: 'US Crossword', description: "Solve terms with a 'dot' iin them. SUTTER 23D,EXECUTIVE 17R, SEGREGATION 9D, CARTER 31R", answer: 'DRDRD', hint: '', category: 'Directional')
+        questionaire.questions.create(statement: 'US Crossword', description: "Solve terms with a 'dot' in them. SUTTER 23D,EXECUTIVE 17R, SEGREGATION 9D, CARTER 31R ARMSTRONG 3D", answer: 'DRDRD', hint: 'Which term have a dot in them?', category: 'Directional')
         questionaire.questions.create(statement: 'Landformula', description: 'Answer questions. Questions where the second word is correct give the digits.', answer: '145', hint: "Which question's answers are the second word?", category: '3 Number')
-
 
       #Yellow
       when 'yellow'
