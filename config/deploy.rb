@@ -124,6 +124,6 @@ task :restart => :environment do
   command %[mkdir -p #{File.join(fetch(:current_path), 'tmp')}]
   command %[touch #{File.join(fetch(:current_path), 'tmp', 'restart.txt')}]
   invoke :'rvm:use', "#{fetch(:ruby_version)}@#{fetch(:gemset)}"
-  command %[cd #{File.join(fetch(:current_path))} && bundle exec sidekiq  -C config/sidekiq.yml -L log/sidekiq.log -d]
+  command %[cd #{File.join(fetch(:current_path))} && RAILS_ENV=#{fetch(:rails_env)} bundle exec sidekiq  -C config/sidekiq.yml -L log/sidekiq.log -d]
   invoke :'product_deployment_sheet:update'
 end
