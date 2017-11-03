@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
   end
 
   def submit
-    if params[:question][:answer] == @question.answer && @question.update(answered: true)
+    if (params[:question][:answer] == @question.answer) && @question.update(answered: true)
       ActionCable.server.broadcast "team_#{current_student.team.id}", {'team' => current_student.team}
       ActionCable.server.broadcast "game_#{current_student.game.id}", {'score' => current_student.game}
     end
