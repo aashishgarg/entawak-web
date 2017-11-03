@@ -1,7 +1,7 @@
 class GameTemplate < ApplicationRecord
 
   #============== Constants  ===================
-  NAMES = %w(the_invansion)
+  NAMES = %w(the_invasion)
 
   #============== Associations =================
   has_many :games, inverse_of: :game_template, dependent: :destroy
