@@ -1,11 +1,11 @@
-
 default: &default
   adapter: mysql2
-  encoding: utf8
-  reconnect: true
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
   pool: 15
-  reaping_frequency: 25
-  pool: 5
+  reconnect: true
+  username: root
+  password: Welcome@123
   socket: /var/run/mysqld/mysqld.sock
 
 development:
