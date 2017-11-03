@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
       ActionCable.server.broadcast "team_#{current_student.team.id}", {'team' => current_student.team}
       ActionCable.server.broadcast "game_#{current_student.game.id}", {'score' => current_student.game}
     end
-    redirect_to question_team_path(team)
+    redirect_to question_team_path(current_student.team)
   end
 
   private

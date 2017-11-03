@@ -29,7 +29,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    cookies.signed[:game_id] = current_student.game.id
+    cookies.signed[:game_id] = current_student&.game.id
   end
 
   def team
