@@ -18,6 +18,8 @@
             }
         });
     });
+
+    $('.main_container').find('#final_answer').val('')
     var answer = [];
     $('.main_container').find('.direction').on('click', function () {
         var tag = $("<i aria-hidden='true' class='" + $(this).data('class') + "'></i>");
