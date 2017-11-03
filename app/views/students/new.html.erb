@@ -2,7 +2,7 @@
 
 <div class="enter_name_code">
   <%= form_with model: @game.students.build, local: true do |f| %>
-      <%= f.text_field :name, placeholder: 'Name', class: 'student_name', required: true %>
+      <%= f.text_field :name, placeholder: 'Name', class: 'student_name', maxlength: '50', required: true %>
       <%= f.hidden_field :secret_knock, value: @game.secret_knock, placeholder: 'Name', class: 'student_name' %>
       <%= f.submit 'Enter', class: 'btn primery-gradient-l-r student_button' %>
   <% end %>

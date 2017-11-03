@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(version: 20171102092044) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "clue_sheet_file_name"
+    t.string "clue_sheet_content_type"
+    t.integer "clue_sheet_file_size"
+    t.datetime "clue_sheet_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

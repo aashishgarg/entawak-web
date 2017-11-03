@@ -9,7 +9,8 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 
 #============ Create Game template    ================================
 GameTemplate::NAMES.each {|template| GameTemplate.create(name: template.titleize, subject: 'science', level: '12',
-                                                         avatar: File.open("#{Rails.root}/app/assets/images/game-image-3.jpg"))}
+                                                         avatar: File.open("#{Rails.root}/app/assets/images/game-image-3.jpg"),
+                                                         clue_sheet: File.open("#{Rails.root}/the_invansion.pdf"))}
 
 #============ Create Teacher and game ================================
 teacher = Teacher.create(name: 'Teacher', email: 'sample@headerlabs.com', password: 'Welcome@123', password_confirmation: 'Welcome@123')

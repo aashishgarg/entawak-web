@@ -33,6 +33,12 @@ img {
   height: auto;
 }
 
+a.disabled {
+  //pointer-events: none;
+  cursor: not-allowed;
+  background: #666666 !important;
+}
+
 .light_bg {
   background: rgba(245, 242, 246, .75);
   padding: 40px 0;
@@ -370,6 +376,16 @@ img {
 .knock_table_div {
   border: 1px solid #ddd;
   border-radius: 4px;
+  position: relative;
+
+  .fa {
+    position: absolute;
+    right: -32px;
+    top: 18px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
 }
 
 .secret_knock .table {

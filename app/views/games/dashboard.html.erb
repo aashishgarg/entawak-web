@@ -38,6 +38,7 @@
 <div class="container-fluid light_bg">
   <div class="container">
     <div class="row">
+
       <% GameTemplate.all.each do |template| %>
           <div class="col-sm-4 game_box">
             <figure><%= image_tag(template.avatar.url) %>
@@ -49,6 +50,49 @@
             <p>Level: <strong><%= template.level %></strong></p>
           </div>
       <% end %>
+
+
+      <div class="col-sm-4 game_box">
+        <figure><img src="http://cloud.gametop.com/download-free-games/cattch/m0.jpg">
+          <%= link_to 'Play Now', 'javascript:void(0);', class: "disabled playnow_btn nav-link" %>
+        </figure>
+        <h2>The Cave</h2>
+        <p>Game Time: <strong>30 minutes</strong></p>
+        <p>Subject: <strong>Science</strong></p>
+        <p>Level: <strong>12</strong></p>
+      </div>
+
+      <div class="col-sm-4 game_box">
+        <figure><%= image_tag('game-image-1.jpg') %>
+          <%= link_to 'Play Now', 'javascript:void(0);', class: "disabled playnow_btn nav-link" %>
+        </figure>
+        <h2>Dr. Mittens</h2>
+        <p>Game Time: <strong>30 minutes</strong></p>
+        <p>Subject: <strong>Science</strong></p>
+        <p>Level: <strong>12</strong></p>
+      </div>
+
+
+      <div class="col-sm-4 game_box">
+        <figure><%= image_tag('game-image-1.jpg') %>
+          <%= link_to 'Play Now', 'javascript:void(0);', class: "disabled playnow_btn nav-link" %>
+        </figure>
+        <h2>Mr. Roboto</h2>
+        <p>Game Time: <strong>30 minutes</strong></p>
+        <p>Subject: <strong>Science</strong></p>
+        <p>Level: <strong>12</strong></p>
+      </div>
+
+      <div class="col-sm-4 game_box">
+        <figure>
+          <%= image_tag('game-image-3.jpg') %>
+          <%= link_to 'Play Now', 'javascript:void(0);', class: "disabled playnow_btn nav-link" %>
+        </figure>
+        <h2>The Vampire</h2>
+        <p>Game Time: <strong>30 minutes</strong></p>
+        <p>Subject: <strong>Science</strong></p>
+        <p>Level: <strong>12</strong></p>
+      </div>
     </div> <!--row-->
   </div>
 </div><!--container-fluid-->
