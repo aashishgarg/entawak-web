@@ -63,9 +63,9 @@ Team::CLAN_NAMES.each do |clan|
 
       #purple
       when 'purple'
-        questionaire.questions.create(statement: 'Exploration', description: 'No CAGE could hold these explorers.Which numbers match the CAGE? C=4,A=2,G=3,E=5', answer: '4235', hint: 'Which numbers spell CAGE?', category: '4 Number')
+        questionaire.questions.create(statement: 'Exploration', description: 'No CAGE could hold these explorers.Which numbers match with CAGE? C=4,A=2,G=3,E=5', answer: '4235', hint: 'Which numbers spell CAGE?', category: '4 Number')
         questionaire.questions.create(statement: 'Earthwords', description: 'The first letter of the answers for 38456. The first letter of the answer for question 3, 8, 4, 5, 6 in order.', answer: 'TIRED', hint: 'Lithosphere contains up parts of two layers.', category: 'Word', options: ['FRESH', 'DRAINED', 'TIRED', 'EXHAUSTED'])
-        questionaire.questions.create(statement: 'Division Hero', description: 'Start remainder 0,end remainder 8.Begin at the answer with R=0 more towards R=1,R=2...R=8', answer: 'RULULDLD', hint: '5 into 20 has remainder 0, so start there,Move 8 times.', category: 'Directional')
+        questionaire.questions.create(statement: 'Division Hero', description: 'Start remainder 0,end remainder 8.Begin at the answer with R=0 more towards R=1,R=2...R=8', answer: 'RULULDLD', hint: '5 into 20 has remainder 0, so start there. Move 8 times.', category: 'Directional')
         questionaire.questions.create(statement: 'Capital Idea', description: 'FOUR this puzzle, count the capital letters. Find which question numbers need exactly 4 capital letters.', answer: '259', hint: 'Which questions need 4 capital letters?', category: '3 Number')
 
       else
